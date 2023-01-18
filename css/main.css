@@ -1,0 +1,113 @@
+body {
+	margin: 0;
+	overflow: hidden;
+
+	background-color: #101325;
+}
+
+#game:not(.active) {
+	display: none;
+}
+#home:not(.active) {
+	display: none;
+}
+#canv {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#mapInput {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	
+	display: none;
+}
+#mapInput.active {
+	display: block;
+}
+
+#counters {
+	position: absolute;
+	top:  80px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 1;
+
+	user-select: none;
+	-webkit-user-select: none;
+}
+.counter {
+	position: static;
+	display: inline-block;
+
+	font-family: "Montserrat", sans-serif;
+	font-weight: normal;
+	font-size: 22px;
+
+	text-align: center;
+	color: white;
+
+	margin-right: 50px;
+}
+.counter::before {
+	display: inline-block;
+	content: "";
+
+	position: relative;
+	top: 6px;
+
+	width:  30px;
+	height: 30px;
+	margin-right: 6px;
+
+	background-image: url("../img/rect.png");
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+#diagRectCounter::before {
+	background-image: url("../img/diagRect.png");
+}
+#triangleCounter::before {
+	background-image: url("../img/triangle.png");
+}
+.counter.hidden {
+	display: none;
+}
+#redo {
+	position: absolute;
+	top:  70px;
+	right: 100px;
+
+	width:  60px;
+	height: 60px;
+	background-color: #1C203C;
+	border-radius: 8px;
+
+	background-image: url("../img/redo.svg");
+	background-size: 40px;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	cursor: pointer;
+}
+#homeButton {
+	position: absolute;
+	top:  150px;
+	right: 100px;
+
+	width:  60px;
+	height: 60px;
+	background-color: #1C203C;
+	border-radius: 8px;
+
+	background-image: url("../img/home.svg");
+	background-size: 30px;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	cursor: pointer;
+}

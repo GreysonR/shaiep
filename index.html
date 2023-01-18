@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>schaiep</title>
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+	<input id="mapInput" type="file" accept="image/svg+xml">
+	<div id="game">
+		<canvas id="canv"></canvas>
+	
+		<div id="counters">
+			<div id="rectCounter" class="counter">0 / 1</div>
+			<div id="diagRectCounter" class="counter">0 / 1</div>
+			<div id="triangleCounter" class="counter">0 / 1</div>
+		</div>
+		<div id="redo" onclick="loadLevel(curLevel.name || curLevel.data)"></div>
+		<div id="homeButton" onclick="unloadLevel();openHome();"></div>
+	</div>
+
+	<div id="home" class="active">
+		<div id="levelSets">
+			<div class="levelSet">
+				<div class="center">
+					<div class="levelIcon" onclick="selectLevel(this)">1</div>
+					<div class="levelIcon" onclick="selectLevel(this)">2</div>
+					<div class="levelIcon" onclick="selectLevel(this)">3</div>
+					<div class="levelIcon" onclick="selectLevel(this)">4</div>
+					<div class="levelIcon" onclick="selectLevel(this)">5</div>
+				</div>
+			</div>
+			<div class="levelSet">
+				<div class="center">
+					<div class="levelIcon" onclick="selectLevel(this)">6</div>
+					<div class="levelIcon" onclick="selectLevel(this)">7</div>
+					<div class="levelIcon" onclick="selectLevel(this)">8</div>
+					<div class="levelIcon" onclick="selectLevel(this)">9</div>
+					<div class="levelIcon" onclick="selectLevel(this)">10</div>
+				</div>
+			</div>
+			<div class="levelSet">
+				<div class="center">
+					<div class="levelIcon" onclick="selectLevel(this)">11</div>
+					<div class="levelIcon" onclick="selectLevel(this)">12</div>
+					<div class="levelIcon" onclick="selectLevel(this)">13</div>
+					<div class="levelIcon" onclick="selectLevel(this)">14</div>
+					<div class="levelIcon" onclick="selectLevel(this)">15</div>
+				</div>
+			</div>
+			<div class="levelSet">
+				<div class="center">
+					<div class="levelIcon" onclick="selectLevel(this)">16</div>
+					<div class="levelIcon" onclick="selectLevel(this)">17</div>
+					<div class="levelIcon" onclick="selectLevel(this)">18</div>
+					<div class="levelIcon" onclick="selectLevel(this)">19</div>
+					<div class="levelIcon" onclick="selectLevel(this)">20</div>
+				</div>
+			</div>
+		</div>
+		<div id="arrows">
+			<div id="leftArrow"  onclick="shiftHome(-1)"></div>
+			<div id="rightArrow" onclick="shiftHome(1)"></div>
+		</div>
+		<div id="levelList">
+			<div class="block active" onclick="switchBlock(this)"></div>
+			<div class="block" onclick="switchBlock(this)"></div>
+			<div class="block" onclick="switchBlock(this)"></div>
+			<div class="block" onclick="switchBlock(this)"></div>
+		</div>
+	</div>
+</body>
+
+<!-- engine -->
+<script src="js/engine/animations.js"></script>
+<script src="js/engine/vec.js"></script>
+<script src="js/engine/grid.js"></script>
+
+<script src="js/engine/performance.js"></script>
+<script src="js/engine/bodies.js"></script>
+<script src="js/engine/render.js"></script>
+
+<!-- init -->
+<script src="js/init/main.js"></script>
+<script src="js/init/keyEvents.js"></script>
+
+<!-- maps -->
+<script src="js/levels/mapping.js"></script>
+<script src="js/levels/levels.js"></script>
+<script src="js/levels/W0.js"></script>
+
+<!-- ui -->
+<script src="js/ui/home.js"></script>
+</html>
