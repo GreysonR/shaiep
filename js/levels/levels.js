@@ -95,7 +95,7 @@ function unloadLevel() {
 		body.delete();
 	}
 
-	window.dispatchEvent(new CustomEvent("mousedown"));
+	window.dispatchEvent(new CustomEvent("mousedown")); // reset dragging
 
 	curLevel.points.length = 0;
 	curLevel.bodies.length = 0;

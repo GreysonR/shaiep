@@ -13,6 +13,10 @@ window.addEventListener("keydown", event => {
 	if (event.altKey && key === "q") {
 		document.getElementById("mapInput").classList.toggle("active");
 	}
+	if (event.shiftKey && key === "x") {
+		localStorage.clear();
+		window.location.reload();
+	}
 });
 window.addEventListener("keyup", event => {
 	let key = event.key.toLowerCase();
@@ -199,39 +203,56 @@ window.addEventListener("mousedown", event => {
 											curLevel.coveredPoints++;
 	
 											if (curLevel.coveredPoints >= curLevel.points.length) {
-												setTimeout(() => {
-													if (curLevel.name) {
-														let split = curLevel.name.split("-");
-														let pid = split[0];
-														let lid = split[1];
-	
-														let elem = document.getElementsByClassName("levelSet")[pid];
-														let maxLid = elem.children[0].childElementCount;
-														let maxPid = elem.parentNode.childElementCount;
-	
-														lid++;
-														if (lid >= maxLid) {
-															lid = 0;
-															pid++;
-	
-															if (pid >= maxPid) {
-																pid--;
-																lid = 0;
-															}
-															openHome();
-															setTimeout(() => {
-																shiftHome(1);
+												if (curLevel.name) {
+													let split = curLevel.name.split("-");
+													let pid = split[0];
+													let lid = split[1];
 
-																setTimeout(() => {
-																	unlockWorld(pid);
-																}, 300);
-															}, 300);
-														}
-														else {
-															loadLevel(pid + "-" + lid);
-														}
+													let unlockedNext = false;
+													if (!data[pid]) data[pid] = [];
+													if (!data[pid].includes(lid)) {
+														data[pid].push(lid);
+
+														if (data[pid].length >= 5) unlockedNext = true;
 													}
-												}, 500);
+
+													let setElem = document.getElementsByClassName("levelSet")[pid];
+													let levelElem = setElem.children[0].children[lid];
+													levelElem.classList.add("complete");
+
+													save();
+
+													setTimeout(() => {
+															let elem = document.getElementsByClassName("levelSet")[pid];
+															let maxLid = elem.children[0].childElementCount;
+															let maxPid = elem.parentNode.childElementCount;
+		
+															lid++;
+															if (unlockedNext) {
+																lid = 0;
+																pid++;
+		
+																if (pid >= maxPid) {
+																	pid--;
+																}
+																openHome();
+																setTimeout(() => {
+																	shiftHome(1);
+
+																	setTimeout(() => {
+																		unlockWorld(pid);
+																	}, 300);
+																}, 300);
+															}
+															else if (lid >= maxLid) {
+																lid = 0;
+																openHome();
+															}
+															else {
+																loadLevel(pid + "-" + lid);
+															}
+													}, 500);
+												}
 											}
 										}
 										if (mouse.path.includes(point)) { // is an edge point
