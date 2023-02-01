@@ -18,6 +18,7 @@ let curLevel = {
 		triangle: 0,
 	},
 	coveredPoints: 0,
+	maxPoints: 0,
 	points: [],
 	bodies: [],
 	otherBodies: [],
@@ -31,7 +32,9 @@ function loadLevel(name) {
 
 	unloadLevel();
 
-	let { point, rect, diagRect, triangle } = level;
+	let { point, badPoint, rect, diagRect, triangle } = level;
+
+	if (badPoint === undefined) badPoint = [];
 
 	rectCounter.innerHTML = rect + " / " + rect;
 	diagRectCounter.innerHTML = diagRect + " / " + diagRect;
@@ -70,10 +73,21 @@ function loadLevel(name) {
 		}
 	}));
 
+	curLevel.maxPoints = 0;
 	for (let p of point) {
 		let obj = new circle(7, new vec(p).sub2(center).mult2(100), {
 			render: {
 				background: "#BFD1E5",
+			}
+		});
+		curLevel.maxPoints++;
+		curLevel.points.push(obj);
+	}
+	for (let p of badPoint) {
+		let obj = new circle(7, new vec(p).sub2(center).mult2(100), {
+			bad: true,
+			render: {
+				background: "#DF3C3C",
 			}
 		});
 		curLevel.points.push(obj);
@@ -84,6 +98,7 @@ function unloadLevel() {
 	curLevel.used.diagRect = 0;
 	curLevel.used.triangle = 0;
 	curLevel.coveredPoints = 0;
+	curLevel.maxPoints = 0;
 
 	for (let p of curLevel.points) {
 		p.delete();

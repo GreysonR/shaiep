@@ -12,12 +12,14 @@ document.getElementById("mapInput").addEventListener("input", event => {
 		
 		let out = {
 			point: [],
+			badPoint: [],
 			rect: 0,
 			diagRect: 0,
 			triangle: 0,
 		}
 
 		let types = {
+			"#DF3C3C": "badPoint",
 			"#3B57ED": "rect",
 			"#2AE369": "diagRect",
 			"#E3402A": "triangle",
@@ -60,7 +62,7 @@ document.getElementById("mapInput").addEventListener("input", event => {
 				}
 
 				let name = types[rect.fill] ?? "point";
-				if (name === "point") {
+				if (name === "point" || name === "badPoint") {
 					out[name].push({
 						x: rect.x,
 						y: rect.y,
@@ -89,6 +91,10 @@ document.getElementById("mapInput").addEventListener("input", event => {
 			min.min2(point);
 		}
 		for (let point of out.point) {
+			point.x = Math.round((point.x - min.x) / 12.5) / 2;
+			point.y = Math.round((point.y - min.y) / 12.5) / 2;
+		}
+		for (let point of out.badPoint) {
 			point.x = Math.round((point.x - min.x) / 12.5) / 2;
 			point.y = Math.round((point.y - min.y) / 12.5) / 2;
 		}

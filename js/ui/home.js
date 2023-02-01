@@ -21,6 +21,8 @@ function selectLevel(elem) {
 	let lid = Array.from(elem.parentNode.children).indexOf(elem);
 	let pid = Array.from(elem.parentNode.parentNode.parentNode.children).indexOf(elem.parentNode.parentNode);
 
+	
+	playSound(`startLevel.mp3`, 0.7);
 	loadLevel(pid + "-" + lid);
 	document.getElementById("game").classList.add("active");
 	document.getElementById("home").classList.remove("active");

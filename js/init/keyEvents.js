@@ -4,9 +4,11 @@ window.addEventListener("keydown", event => {
 	let key = event.key.toLowerCase();
 
 	if (key === "r" && inGame) {
+		playSound(`reverse.mp3`);
 		loadLevel(curLevel.name);
 	}
 	if (key === "escape" && inGame) {
+		playSound(`sharpClick1.mp3`, 0.3);
 		unloadLevel();
 		openHome();
 	}
@@ -27,6 +29,7 @@ let mouse = {
 	gamePos: new vec(0, 0),
 	path: [],
 	dragging: false,
+	badLine: false,
 };
 window.addEventListener("mousemove", event => {
 	let screenPos = new vec(event.clientX, event.clientY);
@@ -43,14 +46,41 @@ window.addEventListener("mousedown", event => {
 	let downStart = performance.now();
 
 	for (let point of curLevel.points) {
-		if (point.position.sub(gamePos).length <= 40) {
+		if (point.position.sub(gamePos).length <= 40 && !point.bad) {
+			playSound(`softClick${ Math.floor(Math.random() * 3) + 1 }.mp3`);
 			mouse.path.push(point);
 
-			if (!point.isEdge && !point.isInside) {
+			if (!point.isEdge && !point.isInside && !point.bad) {
 				point.render.background = "#62C370";
 			}
 
 			function mousemove(event) {
+				mouse.badLine = false;
+
+				// check for bad points in line
+				(function checkBadPoints() {
+					if (mouse.path.length === 0) return;
+					point = mouse.path[mouse.path.length - 1];
+
+					let posA = mouse.gamePos;
+					let dirA = point.position.sub(posA).normalize2();
+					let dirALen = point.position.sub(posA).length;
+
+					for (let pointB of curLevel.points) {
+						if (!pointB.bad || mouse.path.includes(pointB) && (mouse.path.length <= 2 || mouse.path[0] !== pointB)) continue;
+	
+						let dirB = pointB.position.sub(posA);
+						
+						let dot = dirA.dot(dirB);
+						let cross = dirA.cross(dirB);
+	
+						if (dot > -10 && dot <= dirALen + 20 && Math.abs(cross) <= 15) {
+							mouse.badLine = true;
+							break;
+						}
+					}
+				})();
+
 				for (let point of curLevel.points) {
 					if (point.position.sub(mouse.gamePos).length <= 30 && (!mouse.path.includes(point) || mouse.path.length > 2 && mouse.path[0] === point)) {
 
@@ -69,24 +99,33 @@ window.addEventListener("mousedown", event => {
 							let cross = dirA.cross(dirB);
 
 							if (dot > 0 && dot <= dirALen + 20 && Math.abs(cross) <= 15) {
+								if (pointB.bad) {
+									foundPoints.length = 0;
+									break;
+								}
 								foundPoints.push([pointB, dot]);
 							}
 						}
 
+						let foundEnd = false;
 						foundPoints.sort((a, b) => a[1] > b[1] ? 1 : a[1] < b[1] ? -1 : 0);
 						for (let i = 0; i < foundPoints.length; i++) {
 							let point = foundPoints[i][0];
-							if (!point.isEdge && !point.isInside) {
+							if (!point.isEdge && !point.isInside && !point.bad) {
 								point.render.background = "#62C370";
 							}
 
 							if (mouse.path[0] === point) {
+								foundEnd = true;
 								cancel();
 								break;
 							}
 							else {
 								mouse.path.push(point);
 							}
+						}
+						if (foundPoints.length > 0 && !foundEnd) {
+							playSound(`softClick${ Math.floor(Math.random() * 3) + 1 }.mp3`);
 						}
 
 						break;
@@ -95,7 +134,7 @@ window.addEventListener("mousedown", event => {
 			}
 			function cancel(event) {
 				for (let point of mouse.path) {
-					if (!point.isEdge && !point.isInside) {
+					if (!point.isEdge && !point.isInside && !point.bad) {
 						point.render.background = "#BFD1E5";
 					}
 				}
@@ -120,6 +159,10 @@ window.addEventListener("mousedown", event => {
 							if (i === 0) break;
 							i--;
 						}
+					}
+
+					function fail() {
+						playSound(`WrongClick.mp3`, 0.3);
 					}
 
 					// detect shape type
@@ -187,7 +230,15 @@ window.addEventListener("mousedown", event => {
 									break;
 								}
 							}
-							if (!insideShape) {
+							let containsBad = false;
+							for (let point of curLevel.points) {
+								if (point.bad && obj.containsPoint(point.position)) {
+									containsBad = true;
+									obj.delete();
+									break;
+								}
+							}
+							if (!insideShape && !containsBad) {
 								curLevel.bodies.push(obj);
 	
 								if (triangle) curLevel.used.triangle++;
@@ -202,7 +253,7 @@ window.addEventListener("mousedown", event => {
 										if (!point.isEdge && !point.isInside) {
 											curLevel.coveredPoints++;
 	
-											if (curLevel.coveredPoints >= curLevel.points.length) {
+											if (curLevel.coveredPoints >= curLevel.maxPoints) {
 												if (curLevel.name) {
 													let split = curLevel.name.split("-");
 													let pid = split[0];
@@ -263,8 +314,20 @@ window.addEventListener("mousedown", event => {
 										}
 									}
 								}
+
+								// succeed
+								playSound(`softClick${ Math.floor(Math.random() * 3) + 1 }.mp3`);
+							}
+							else {
+								fail();
 							}
 						}
+						else {
+							fail();
+						}
+					}
+					else {
+						fail();
 					}
 				}
 				mouse.path.length = 0;
@@ -301,11 +364,20 @@ Render.on("beforeLayer0", () => {
 			}
 		}
 
-		ctx.lineTo(mouse.gamePos.x, mouse.gamePos.y);
+		if (!mouse.badLine) ctx.lineTo(mouse.gamePos.x, mouse.gamePos.y);
 		ctx.lineWidth = 6;
 		ctx.lineJoin = "round";
 		ctx.lineCap = "round";
 		ctx.strokeStyle = "#62C370";
 		ctx.stroke();
+
+		if (mouse.badLine) {
+			ctx.beginPath();
+			let lastPos = mouse.path[mouse.path.length - 1].position;
+			ctx.moveTo(lastPos.x, lastPos.y);
+			ctx.lineTo(mouse.gamePos.x, mouse.gamePos.y);
+			ctx.strokeStyle = "#C5594A";
+			ctx.stroke();
+		}
 	}
 });
