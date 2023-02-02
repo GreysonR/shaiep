@@ -8,7 +8,7 @@ window.addEventListener("keydown", event => {
 		loadLevel(curLevel.name);
 	}
 	if (key === "escape" && inGame) {
-		playSound(`sharpClick1.mp3`, 0.3);
+		playSound(`sharpClick1.mp3`, 0.4);
 		unloadLevel();
 		openHome();
 	}
@@ -162,7 +162,7 @@ window.addEventListener("mousedown", event => {
 					}
 
 					function fail() {
-						playSound(`WrongClick.mp3`, 0.3);
+						playSound(`WrongClick.mp3`, 0.6);
 					}
 
 					// detect shape type

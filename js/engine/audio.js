@@ -1,7 +1,7 @@
 "use strict";
 
 let audioCache = {};
-async function playSound(filename, volume = 0.6, pitch = 1) {
+async function playSound(filename, volume = 0.7, pitch = 1) {
 	let name = "./audio/" + filename;
 	let v = audioCache[name];
 

@@ -143,6 +143,7 @@
 
 #levelList {
 	position: absolute;
+	width: max-content;
 	bottom: 50px;
 	left: 50vw;
 	transform: translateX(-50%);
