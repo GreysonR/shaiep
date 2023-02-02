@@ -5,6 +5,9 @@
 
 	width: 100vw;
 	height: 100vh;
+
+	user-select: none;
+	-webkit-user-select: none;
 }
 #levelSets {
 	position: absolute;
@@ -15,6 +18,9 @@
 	transition: transform 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
 
 	width: max-content;
+
+	user-select: none;
+	-webkit-user-select: none;
 }
 .levelSet {
 	width:  100vw;
@@ -25,6 +31,9 @@
 
 	display: inline-flex;
 	justify-content: center;
+
+	user-select: none;
+	-webkit-user-select: none;
 
 	user-select: none;
 	-webkit-user-select: none;
@@ -49,6 +58,9 @@
 	background-position: center;
 	background-repeat: no-repeat;
 
+	user-select: none;
+	-webkit-user-select: none;
+
 	pointer-events: none;
 }
 .levelSet .center {
@@ -57,6 +69,9 @@
 
 	margin-left:  auto;
 	margin-right: auto;
+
+	user-select: none;
+	-webkit-user-select: none;
 }
 .levelSet .levelIcon {
 	display: inline-block;
@@ -77,6 +92,9 @@
 	line-height: 60px;
 
 	cursor: pointer;
+
+	user-select: none;
+	-webkit-user-select: none;
 
 	transition: width, height, border, background, font-size, margin, line-height;
 	transition-duration: 300ms;
@@ -134,6 +152,9 @@
 	left: 0;
 	cursor: pointer;
 	z-index: 0;
+
+	user-select: none;
+	-webkit-user-select: none;
 }
 #rightArrow {
 	background-image: url("../img/arrowRight.svg");
@@ -159,6 +180,9 @@
 	display: inline-block;
 	margin-right: 0;
 	margin-left:  0;
+
+	user-select: none;
+	-webkit-user-select: none;
 
 	transition: background 350ms, height 350ms;
 	transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
