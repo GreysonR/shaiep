@@ -39,11 +39,34 @@ window.addEventListener("mousemove", event => {
 	mouse.gamePos = gamePos;
 });
 window.addEventListener("mousedown", event => {
-	if (mouse.dragging || !inGame || event.button !== 0) return;
+	if (mouse.dragging || !inGame) return;
 
 	let mousePos = new vec(event.clientX, event.clientY);
 	let gamePos = camera.screenPtToGame(mousePos);
 	let downStart = performance.now();
+
+	if (event.button === 2) { // delete box with right click
+		for (let body of curLevel.bodies) {
+			if (body.containsPoint(gamePos)) {
+				for (let point of curLevel.points) {
+					if (body.containsPoint(point.position) && (point.isEdge || point.isInside)) {
+						point.isEdge = false;
+						point.isInside = false;
+						point.render.background = "#BFD1E5";
+						curLevel.coveredPoints--;
+					}
+				}
+				body.delete();
+				curLevel.bodies.delete(body);
+				curLevel.used[body.shapeType]--;
+
+				updateCounters();
+				break;
+			}
+		}
+	}
+	if (event.button !== 0) return;
+
 
 	for (let point of curLevel.points) {
 		if (point.position.sub(gamePos).length <= 40 && !point.bad) {
@@ -316,6 +339,7 @@ window.addEventListener("mousedown", event => {
 								}
 
 								// succeed
+								obj.shapeType = rect ? "rect" : diagRect ? "diagRect" : "triangle";
 								playSound(`softClick${ Math.floor(Math.random() * 3) + 1 }.mp3`);
 							}
 							else {
