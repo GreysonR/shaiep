@@ -48,8 +48,21 @@ window.addEventListener("mousedown", event => {
 	if (event.button === 2) { // delete box with right click
 		for (let body of curLevel.bodies) {
 			if (body.containsPoint(gamePos)) {
+				// get points in other bodies (super slow big O but who cares it's 4 shapes and 10 points max)
+				let coveredPoints = new Set();
+				for (let bodyB of curLevel.bodies) {
+					if (bodyB === body) continue;
+
+					for (let point of curLevel.points) {
+						if (bodyB.containsPoint(point.position) && (point.isEdge || point.isInside)) {
+							coveredPoints.add(point);
+						}
+					}
+				}
+
+				// remove points covered by this body but not by others
 				for (let point of curLevel.points) {
-					if (body.containsPoint(point.position) && (point.isEdge || point.isInside)) {
+					if (!coveredPoints.has(point) && (point.isEdge || point.isInside) && body.containsPoint(point.position)) {
 						point.isEdge = false;
 						point.isInside = false;
 						point.render.background = "#BFD1E5";
