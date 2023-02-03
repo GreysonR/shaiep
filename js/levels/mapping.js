@@ -90,13 +90,15 @@ document.getElementById("mapInput").addEventListener("input", event => {
 		for (let point of out.point) {
 			min.min2(point);
 		}
+		
+		let snap = 25 / 4;
 		for (let point of out.point) {
-			point.x = Math.round((point.x - min.x) / 12.5) / 2;
-			point.y = Math.round((point.y - min.y) / 12.5) / 2;
+			point.x = Math.round((point.x - min.x) / snap) * snap / 25;
+			point.y = Math.round((point.y - min.y) / snap) * snap / 25;
 		}
 		for (let point of out.badPoint) {
-			point.x = Math.round((point.x - min.x) / 12.5) / 2;
-			point.y = Math.round((point.y - min.y) / 12.5) / 2;
+			point.x = Math.round((point.x - min.x) / snap) * snap / 25;
+			point.y = Math.round((point.y - min.y) / snap) * snap / 25;
 		}
 
 		// out = JSON.stringify(out, null, "\t");

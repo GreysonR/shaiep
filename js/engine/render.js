@@ -98,7 +98,8 @@ let Render = (() => {
 		// ~ Camera
 		screenPtToGame: function(point) {
 			let camera = Render.camera;
-			return new vec({ x: (point.x - camera.translation.x) / camera.scale, y: (point.y - camera.translation.y) / camera.scale });
+			let top = parseInt(canv.style.top) ?? 0;
+			return new vec({ x: (point.x - camera.translation.x) / camera.scale, y: (point.y - camera.translation.y - top) / camera.scale });
 		},
 		gamePtToScreen: function(point) {
 			let camera = Render.camera;
@@ -106,8 +107,11 @@ let Render = (() => {
 		},
 	}
 	Render.setSize = function(width, height) {
+		let offsetTop = Math.min(height * 0.3, 100);
+		height -= offsetTop;
 		canv.width =  width;
 		canv.height = height;
+		canv.style.top = offsetTop + "px";
 		Render.camera.boundSize = Math.min(width, height); // Math.sqrt(width * height) || 1; // Math.sqrt(width * height) || 1; // Math.sqrt(width**2 + height**2) / 2;
 	}
 

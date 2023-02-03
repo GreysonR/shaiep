@@ -82,7 +82,7 @@ window.addEventListener("mousedown", event => {
 
 
 	for (let point of curLevel.points) {
-		if (point.position.sub(gamePos).length <= 40 && !point.bad) {
+		if (!point.bad && !point.isInside && point.position.sub(gamePos).length <= 40) {
 			playSound(`softClick${ Math.floor(Math.random() * 3) + 1 }.mp3`);
 			mouse.path.push(point);
 
@@ -110,7 +110,7 @@ window.addEventListener("mousedown", event => {
 						let dot = dirA.dot(dirB);
 						let cross = dirA.cross(dirB);
 	
-						if (dot > -10 && dot <= dirALen + 20 && Math.abs(cross) <= 15) {
+						if (dot > -10 && dot <= dirALen + 20 && Math.abs(cross) <= 10) {
 							mouse.badLine = true;
 							break;
 						}
@@ -118,7 +118,7 @@ window.addEventListener("mousedown", event => {
 				})();
 
 				for (let point of curLevel.points) {
-					if (point.position.sub(mouse.gamePos).length <= 30 && (!mouse.path.includes(point) || mouse.path.length > 2 && mouse.path[0] === point)) {
+					if (!point.isInside && point.position.sub(mouse.gamePos).length <= 25 && (!mouse.path.includes(point) || mouse.path.length > 2 && mouse.path[0] === point)) {
 
 						let foundPoints = [];
 
@@ -134,7 +134,7 @@ window.addEventListener("mousedown", event => {
 							let dot = dirA.dot(dirB);
 							let cross = dirA.cross(dirB);
 
-							if (dot > 0 && dot <= dirALen + 20 && Math.abs(cross) <= 15) {
+							if (dot > 0 && dot <= dirALen + 20 && Math.abs(cross) <= 10) {
 								if (pointB.bad) {
 									foundPoints.length = 0;
 									break;

@@ -1,0 +1,32 @@
+<svg width="175" height="127" viewBox="0 0 175 127" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="50" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="62" y="62" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="45" y="62" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="50" y="87" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="125" y="82" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="145" y="82" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="93" y="18" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="150" y="18" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="150" y="62" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="87" y="100" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="62" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="25" y="37" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="137" y="100" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="75" y="37" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="75" y="18" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="112" y="62" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="100" y="37" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="125" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="137" y="62" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="50" y="112" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="75" y="62" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="157" y="84" width="5" height="5" rx="2.5" fill="#DF3C3C"/>
+<rect x="100" y="100" width="5" height="5" rx="2.5" fill="#DF3C3C"/>
+<rect x="62" y="12" width="5" height="5" rx="2.5" fill="#DF3C3C"/>
+<rect x="93" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect width="4" height="4" fill="#2AE369"/>
+<rect x="4" width="4" height="4" fill="#3B57ED"/>
+<rect x="8" width="4" height="4" fill="#E3402A"/>
+<path d="M62.129 25.0215L25.3248 37.2896L50.3647 112.41L87.169 100.142L62.129 25.0215Z" stroke="black"/>
+<path d="M150 18L75 18V62L150 62V18Z" stroke="black"/>
+</svg>

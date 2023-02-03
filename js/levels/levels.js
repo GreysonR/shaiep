@@ -51,15 +51,23 @@ function loadLevel(name) {
 	curLevel.max.diagRect = diagRect;
 	curLevel.max.triangle = triangle;
 
-	let center = new vec(0, 0);
 	let bounds = { min: new vec(0, 0), max: new vec(0, 0) };
 	for (let p of point) {
-		center.add2(p);
-
 		bounds.min.min2(p);
 		bounds.max.max2(p);
 	}
-	center.div2(point.length);
+	
+	let vertices = hull(point, Infinity, [".x", ".y"]);
+	vertices = vertices.map(pt => new vec(pt));
+	let center = getCenterOfMass(vertices);
+
+	if (bounds.max.x > 8 || bounds.max.y > 5) {
+		let diff = Math.max(bounds.max.x - 8, bounds.max.y - 5)
+		camera.fov = 1000 + diff * 100;
+	}
+	else {
+		camera.fov = 1000;
+	}
 
 	curLevel.otherBodies.push(new rectangle((bounds.max.x - bounds.min.x) * 100 + 150, (bounds.max.y - bounds.min.y) * 100 + 150, new vec(0, 0), {
 		render: {
