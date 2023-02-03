@@ -54,10 +54,3 @@ levels["8-4"] = {"point":[{"x":1,"y":0},{"x":3,"y":2.5},{"x":4.5,"y":4},{"x":4,"
 
 // levels["8-1"] = 
 // levels["0-0"] = 
-
-window.addEventListener("load", () => {
-	loadLevel("0-0");
-	document.getElementById("game").classList.add("active");
-	document.getElementById("home").classList.remove("active");
-	inGame = true;
-});
