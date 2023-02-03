@@ -89,6 +89,8 @@ window.addEventListener("mousedown", event => {
 			if (!point.isEdge && !point.isInside && !point.bad) {
 				point.render.background = "#62C370";
 			}
+			
+			animations.selectPoint(point);
 
 			function mousemove(event) {
 				mouse.badLine = false;
@@ -150,6 +152,8 @@ window.addEventListener("mousedown", event => {
 							if (!point.isEdge && !point.isInside && !point.bad) {
 								point.render.background = "#62C370";
 							}
+
+							animations.selectPoint(point);
 
 							if (mouse.path[0] === point) {
 								foundEnd = true;
@@ -308,37 +312,40 @@ window.addEventListener("mousedown", event => {
 													levelElem.classList.add("complete");
 
 													save();
-
 													setTimeout(() => {
-															let elem = document.getElementsByClassName("levelSet")[pid];
-															let maxLid = elem.children[0].childElementCount;
-															let maxPid = elem.parentNode.childElementCount;
-		
-															lid++;
-															if (unlockedNext) {
-																lid = 0;
-																pid++;
-		
-																if (pid >= maxPid) {
-																	pid--;
-																}
-																openHome();
-																setTimeout(() => {
-																	shiftHome(1);
-
+														animations.closeLevel(curLevel);
+	
+														setTimeout(() => {
+																let elem = document.getElementsByClassName("levelSet")[pid];
+																let maxLid = elem.children[0].childElementCount;
+																let maxPid = elem.parentNode.childElementCount;
+			
+																lid++;
+																if (unlockedNext) {
+																	lid = 0;
+																	pid++;
+			
+																	if (pid >= maxPid) {
+																		pid--;
+																	}
+																	openHome();
 																	setTimeout(() => {
-																		unlockWorld(pid);
+																		shiftHome(1);
+	
+																		setTimeout(() => {
+																			unlockWorld(pid);
+																		}, 300);
 																	}, 300);
-																}, 300);
-															}
-															else if (lid >= maxLid) {
-																lid = 0;
-																openHome();
-															}
-															else {
-																loadLevel(pid + "-" + lid);
-															}
-													}, 500);
+																}
+																else if (lid >= maxLid) {
+																	lid = 0;
+																	openHome();
+																}
+																else {
+																	loadLevel(pid + "-" + lid);
+																}
+														}, 500);
+													}, 400);
 												}
 											}
 										}
@@ -353,7 +360,7 @@ window.addEventListener("mousedown", event => {
 
 								// succeed
 								obj.shapeType = rect ? "rect" : diagRect ? "diagRect" : "triangle";
-								playSound(`softClick${ Math.floor(Math.random() * 3) + 1 }.mp3`);
+								playSound(`shapeCreate${ Math.floor(Math.random() * 3) + 1 }.mp3`);
 							}
 							else {
 								fail();

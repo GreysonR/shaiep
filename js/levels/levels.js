@@ -18,6 +18,7 @@ let curLevel = {
 		triangle: 0,
 	},
 	coveredPoints: 0,
+	center: new vec(0, 0),
 	maxPoints: 0,
 	points: [],
 	bodies: [],
@@ -60,6 +61,8 @@ function loadLevel(name) {
 	let vertices = hull(point, Infinity, [".x", ".y"]);
 	vertices = vertices.map(pt => new vec(pt));
 	let center = getCenterOfMass(vertices);
+	curLevel.center = center.mult(100);
+
 
 	if (bounds.max.x > 8 || bounds.max.y > 5) {
 		let diff = Math.max(bounds.max.x - 8, bounds.max.y - 5)
@@ -86,6 +89,7 @@ function loadLevel(name) {
 		let obj = new circle(7, new vec(p).sub2(center).mult2(100), {
 			render: {
 				background: "#BFD1E5",
+				visible: false,
 			}
 		});
 		curLevel.maxPoints++;
@@ -96,10 +100,13 @@ function loadLevel(name) {
 			bad: true,
 			render: {
 				background: "#DF3C3C",
+				visible: false,
 			}
 		});
 		curLevel.points.push(obj);
 	}
+
+	animations.openLevel(curLevel);
 }
 function unloadLevel() {
 	curLevel.used.rect = 0;
@@ -107,6 +114,7 @@ function unloadLevel() {
 	curLevel.used.triangle = 0;
 	curLevel.coveredPoints = 0;
 	curLevel.maxPoints = 0;
+	curLevel.center = new vec(0, 0);
 
 	for (let p of curLevel.points) {
 		p.delete();

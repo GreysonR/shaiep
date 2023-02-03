@@ -98,7 +98,7 @@ let Render = (() => {
 		// ~ Camera
 		screenPtToGame: function(point) {
 			let camera = Render.camera;
-			let top = parseInt(canv.style.top) ?? 0;
+			let top = parseInt(canv.style.top) || 0;
 			return new vec({ x: (point.x - camera.translation.x) / camera.scale, y: (point.y - camera.translation.y - top) / camera.scale });
 		},
 		gamePtToScreen: function(point) {

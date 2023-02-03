@@ -3,6 +3,7 @@
 let homePos = 0;
 let inGame = false;
 function shiftHome(dir) {
+	let lastHomePos = homePos;
 	let levelSetsElem = document.getElementById("levelSets");
 	let levelListElem = document.getElementById("levelList");
 	let numSets = levelSetsElem.childElementCount;
@@ -11,6 +12,10 @@ function shiftHome(dir) {
 	homePos = Math.max(0, Math.min(numSets - 1, homePos + dir));
 	levelSetsElem.style.transform = `translate(${ -homePos * 100 }vw, -50%)`;
 	levelListElem.children[homePos].classList.add("active");
+	
+	if (lastHomePos !== homePos && performance.now() > 1000) {
+		playSound("swipe.mp3", 0.6);
+	}
 }
 function switchBlock(elem) {
 	let pid = Array.from(elem.parentNode.children).indexOf(elem);
