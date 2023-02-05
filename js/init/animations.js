@@ -26,6 +26,20 @@ var animations = {
 		for (let point of points) {
 			animations.openPoint(point, center);
 		}
+
+		animation.create({
+			delay: 0,
+			duration: 300,
+			curve: ease.out.cubic,
+			callback: function(p) {
+				bg.opacity = p;
+				bg.scale = 0.7 + p * 0.3;
+			},
+			onend: function() {
+				bg.opacity = 1;
+				bg.scale = 1;
+			},
+		});
 	},
 		openPoint: function(point, center) {
 			if (point.animation) point.animation.stop();
@@ -74,6 +88,20 @@ var animations = {
 		for (let body of bodies) {
 			animations.closeBody(body, center);
 		}
+
+		animation.create({
+			delay: 50,
+			duration: 250,
+			curve: ease.in.cubic,
+			callback: function(p) {
+				bg.opacity = 1 - p;
+				bg.scale = 1 - 0.3 * p
+			},
+			onend: function() {
+				bg.opacity = 0;
+				bg.scale = 0.7;
+			},
+		});
 	},
 		closePoint: function(point, center) {
 			if (point.animation) point.animation.stop();

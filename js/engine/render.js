@@ -16,6 +16,9 @@ let Render = (() => {
 		camera.translation = { x: -cameraPosition.x * boundSize/fov + canvWidth/2, y: -cameraPosition.y * boundSize/fov + canvHeight/2 };
 		camera.scale = boundSize / fov;
 
+		camera.bounds.min.set({ x: -camera.translation.x / camera.scale, y: -camera.translation.y / camera.scale });
+		camera.bounds.max.set({ x:  (canvWidth - camera.translation.x) / camera.scale, y:  (canvHeight - camera.translation.y) / camera.scale });
+
 		ctx.save();
 		ctx.translate(camera.translation.x, camera.translation.y);
 		ctx.scale(camera.scale, camera.scale);
@@ -95,6 +98,10 @@ let Render = (() => {
 		translation: { x: 0, y: 0 },
 		scale: 1,
 		boundSize: 1,
+		bounds: {
+			min: new vec(0, 0),
+			max: new vec(1000, 1000),
+		},
 		// ~ Camera
 		screenPtToGame: function(point) {
 			let camera = Render.camera;
