@@ -2,7 +2,7 @@ levels["0-0"] = {"point":[{"x":0,"y":0},{"x":1,"y":0},{"x":0,"y":1},{"x":1,"y":1
 levels["0-1"] = {"point":[{"x":0,"y":0},{"x":0,"y":1},{"x":0,"y":2},{"x":1,"y":1},{"x":1,"y":2}],"rect":1,"diagRect":0,"triangle":1,"text":"Shapes must be separate and can't overlap"}
 levels["0-2"] = {"point":[{"x":0,"y":0},{"x":0,"y":2},{"x":0,"y":1},{"x":1,"y":1},{"x":2,"y":1.5},{"x":2,"y":0.5},{"x":3,"y":1},{"x":1,"y":0},{"x":1,"y":2}],"badPoint":[],"body":[],"rect":1,"diagRect":0,"triangle":1,"examples":1,"text":"Shapes can be any size"}
 levels["0-3"] = {"point":[{"x":1,"y":1},{"x":1,"y":2},{"x":0,"y":1},{"x":2,"y":1},{"x":1,"y":0}],"rect":0,"diagRect":1,"triangle":0}
-levels["0-4"] = {"point":[{"x":2,"y":1},{"x":4,"y":1},{"x":3,"y":3},{"x":1,"y":0},{"x":1,"y":1},{"x":0,"y":1},{"x":1,"y":2},{"x":3,"y":2},{"x":1,"y":3}],"rect":1,"diagRect":1,"triangle":1}
+levels["0-4"] = {"point":[{"x":2,"y":1},{"x":4,"y":1},{"x":3,"y":3},{"x":1,"y":0},{"x":1,"y":1},{"x":0,"y":1},{"x":1,"y":2},{"x":3,"y":2},{"x":1,"y":3}],"rect":1,"diagRect":1,"triangle":1,"text":"Angles must be 90° in rectangles"}
 
 levels["1-0"] = {"point":[{"x":1,"y":1},{"x":1,"y":0},{"x":1,"y":2},{"x":0,"y":1},{"x":2,"y":1},{"x":2,"y":2},{"x":3,"y":2},{"x":2,"y":3}],"badPoint":[],"rect":0,"diagRect":1,"triangle":0}
 levels["1-1"] = {"point":[{"x":1,"y":1},{"x":1,"y":2},{"x":1,"y":3},{"x":0,"y":2},{"x":2,"y":2},{"x":3,"y":2},{"x":2,"y":3},{"x":2,"y":0},{"x":3,"y":3},{"x":2,"y":1},{"x":3,"y":1}],"rect":0,"diagRect":1,"triangle":1}
