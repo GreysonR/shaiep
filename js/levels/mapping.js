@@ -163,12 +163,12 @@ document.getElementById("mapInput").addEventListener("input", event => {
 				
 				for (let path of paths) {
 					if (path.length > 1) {
-						let name = "body";
+						let name = "";
 						if (types[pathObj.fill] || types[pathObj.stroke]) {
 							name = types[pathObj.fill] || types[pathObj.stroke];
 						}
 						if (!out[name]) {
-							out[name] = [];
+							continue;
 						}
 						let center = getCenterOfMass(path);
 	

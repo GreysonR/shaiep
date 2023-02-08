@@ -88,9 +88,9 @@ Render.on("beforeRender", () => { // Render example background
 			new vec((bounds.max.x * scale - center.x) + marginX, (bounds.max.y * scale - center.y) + marginY),
 			new vec((bounds.min.x * scale - center.x) - marginX, (bounds.max.y * scale - center.y) + marginY),
 
-			new vec((bounds.min.x * scale - center.x) - marginX, scale * (bounds.max.y - bounds.min.y)/2 - center.y + 30 - 20), // arrow
-			new vec((bounds.min.x * scale - center.x) - marginX - 40, scale * (bounds.max.y - bounds.min.y)/2 - center.y - 20),
-			new vec((bounds.min.x * scale - center.x) - marginX, scale * (bounds.max.y - bounds.min.y)/2 - center.y - 30 - 20),
+			new vec((bounds.min.x * scale - center.x) - marginX, scale * (bounds.max.y - bounds.min.y)/2 - center.y + 30 - 40), // arrow
+			new vec((bounds.min.x * scale - center.x) - marginX - 40, scale * (bounds.max.y - bounds.min.y)/2 - center.y - 40),
+			new vec((bounds.min.x * scale - center.x) - marginX, scale * (bounds.max.y - bounds.min.y)/2 - center.y - 30 - 40),
 		];
 		
 		if (canv.width / canv.height < 1.33) { // change to vertical layout
