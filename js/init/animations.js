@@ -19,6 +19,21 @@ var animations = {
 			},
 		});
 	},
+	openExample: function(level) {
+		animation.create({
+			delay: 0,
+			duration: 300,
+			curve: ease.out.cubic,
+			callback: function(p) {
+				exbg.opacity = p;
+				exbg.scale = 0.7 + p * 0.3;
+			},
+			onend: function() {
+				exbg.opacity = 1;
+				exbg.scale = 1;
+			},
+		});
+	},
 	openLevel: function(level) {
 		let { bodies, points } = level;
 		let center = new vec(0, 0);
@@ -78,6 +93,21 @@ var animations = {
 				},
 			});
 		},
+	closeExample: function() {
+		animation.create({
+			delay: 50,
+			duration: 250,
+			curve: ease.in.cubic,
+			callback: function(p) {
+				exbg.opacity = 1 - p;
+				exbg.scale = 1 - 0.3 * p
+			},
+			onend: function() {
+				exbg.opacity = 0;
+				exbg.scale = 0.7;
+			},
+		});
+	},
 	closeLevel: function(level) {
 		let { bodies, points } = level;
 		let center = new vec(0, 0);

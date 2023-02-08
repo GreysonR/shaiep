@@ -13,9 +13,11 @@ document.getElementById("mapInput").addEventListener("input", event => {
 		let out = {
 			point: [],
 			badPoint: [],
+			body: [],
 			rect: 0,
 			diagRect: 0,
 			triangle: 0,
+			examples: 0,
 		}
 
 		let types = {
@@ -23,6 +25,8 @@ document.getElementById("mapInput").addEventListener("input", event => {
 			"#3B57ED": "rect",
 			"#2AE369": "diagRect",
 			"#E3402A": "triangle",
+			"#F1CA41": "examples",
+			"#62C370": "body",
 		}
 		
 		function getNext() {
@@ -78,8 +82,119 @@ document.getElementById("mapInput").addEventListener("input", event => {
 				index = -1;
 			}
 		}
+		function getPolygons() {
+			let iStart = res.indexOf("<path", index);
+			// if (res.indexOf("<path", index) > -1) iStart = Math.min(res.indexOf("<path", index), iStart);
+			let iEnd = res.indexOf("/>", index);
+
+			if (iStart > index) {
+				index = iEnd + 2;
+				
+				// get string of current path
+				let pathText = res.slice(iStart + 5, iEnd);
+				
+				// create object from string
+				if (pathText == "") return;
+				let pathObjArr = pathText.trim().split('"');
+				let pathObj = (() => {
+					let obj  = {};
+					for (let i = 0; i < Math.floor(pathObjArr.length / 2) * 2; i += 2) {
+						obj[pathObjArr[i].replace("=", "").replace(/[" "]/g, "")] = !isNaN(Number(pathObjArr[i + 1])) ? Number(pathObjArr[i + 1]) : pathObjArr[i + 1];
+					}
+					return obj;
+				})();
+
+				let text = res.slice(iStart + 5, iEnd);
+				if (text == "") return;
+				let polyArr = text.trim().split('"').flatMap((v, i, arr) => {
+					if (i % 2 === 0 && v !== "") {
+						return [ [ v, arr[i + 1] ] ];
+					}
+					else {
+						return [];
+					}
+				});
+				let obj = (() => {
+					let obj  = {};
+					for (let i = 0; i < polyArr.length; i++) {
+						obj[polyArr[i][0].replace("=", "").replace(/[" "]/g, "")] = polyArr[i][1];
+					}
+					return obj;
+				})();
+
+				// parse path
+				let pathArr = obj["d"].replace(/M/g, "!M").replace(/H/g, "!H").replace(/V/g, "!V").replace(/L/g, "!L").replace(/Z/g, "!Z").split("!").filter(v => v != "");
+				let x = 0;
+				let y = 0;
+				let paths = [[]];
+				let pathNum = 0;
+				for (let i = 0; i < pathArr.length; i++) {
+					let func = pathArr[i][0]
+					let part = pathArr[i].slice(1).split(" ");
+
+					if (func === "M") {
+						x = Math.round(Number(part[0]));
+						y = Math.round(Number(part[1]));
+					}
+					else if (func === "H") {
+						x = Math.round(Number(part[0]));
+
+						if (isNaN(Number(part[0]))) console.error(part, pathArr);
+					}
+					else if (func === "V") {
+						y = Math.round(Number(part[0]));
+					}
+					else if (func === "L") {
+						x = Math.round(Number(part[0]));
+						y = Math.round(Number(part[1].replace("Z", "")));
+					}
+					else if (func === "Z") {
+						console.warn("More than 1 path");
+						// paths.push([]);
+						// pathNum++;
+					}
+					else {
+						console.error(func, part);
+						console.error(pathArr, i);
+					}
+
+					paths[pathNum].push({ x: Math.round(x), y: Math.round(y) });
+				}
+				
+				for (let path of paths) {
+					if (path.length > 1) {
+						let name = "body";
+						if (types[pathObj.fill] || types[pathObj.stroke]) {
+							name = types[pathObj.fill] || types[pathObj.stroke];
+						}
+						if (!out[name]) {
+							out[name] = [];
+						}
+						let center = getCenterOfMass(path);
+	
+						if (new vec(path[0]).equals(path[path.length - 1])) {
+							path.pop();
+						}
+						out[name].push({
+							x: Math.round(center.x),
+							y: Math.round(center.y),
+							vertices: path,
+						});
+					}
+				}
+			}
+			else {
+				index = -1;
+			}
+		}
 
 		let n = 0;
+		index = 0;
+		while (index !== -1 && n < 500) {
+			getPolygons();
+			n++;
+		}
+		n = 0;
 		index = 0;
 		while (index !== -1 && n < 500) {
 			getNext();
@@ -92,13 +207,38 @@ document.getElementById("mapInput").addEventListener("input", event => {
 		}
 		
 		let snap = 25 / 4;
+		function transformPt(point, min) {
+			return {
+				x: Math.round((point.x - min.x) / snap) * snap / 25,
+				y: Math.round((point.y - min.y) / snap) * snap / 25,
+			}
+		}
+
 		for (let point of out.point) {
-			point.x = Math.round((point.x - min.x) / snap) * snap / 25;
-			point.y = Math.round((point.y - min.y) / snap) * snap / 25;
+			let pt = transformPt(point, min);
+			point.x = pt.x;
+			point.y = pt.y;
 		}
 		for (let point of out.badPoint) {
-			point.x = Math.round((point.x - min.x) / snap) * snap / 25;
-			point.y = Math.round((point.y - min.y) / snap) * snap / 25;
+			let pt = transformPt(point, min);
+			point.x = pt.x;
+			point.y = pt.y;
+		}
+		for (let body of out.body) {
+			let min = new vec(Infinity, Infinity);
+			for (let point of body.vertices) {
+				min.min2(point);
+			}
+
+			for (let point of body.vertices) {
+				let pt = transformPt(point, min);
+				point.x = pt.x;
+				point.y = pt.y;
+			}
+
+			let c = transformPt(body, min);
+			body.x = c.x;
+			body.y = c.y;
 		}
 
 		// out = JSON.stringify(out, null, "\t");

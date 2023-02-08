@@ -24,6 +24,7 @@ let curLevel = {
 	points: [],
 	bodies: [],
 	otherBodies: [],
+	text: "",
 }
 
 function loadLevel(name) {
@@ -34,7 +35,7 @@ function loadLevel(name) {
 
 	unloadLevel();
 
-	let { point, badPoint, rect, diagRect, triangle } = level;
+	let { point, badPoint, rect, diagRect, triangle, text } = level;
 
 	if (badPoint === undefined) badPoint = [];
 
@@ -75,18 +76,6 @@ function loadLevel(name) {
 		camera.fov = 1000;
 	}
 
-	curLevel.otherBodies.push(new rectangle((bounds.max.x - bounds.min.x) * 100 + 150, (bounds.max.y - bounds.min.y) * 100 + 150, new vec(0, 0), {
-		render: {
-			visible: false,
-			layer: -1,
-			background: "#111429",
-			border: "#0D0F1840",
-			borderWidth: 0,
-			bloom: 0,
-			round: 20,
-		}
-	}));
-
 	curLevel.maxPoints = 0;
 	for (let p of point) {
 		let obj = new circle(7, new vec(p).sub2(center).mult2(100), {
@@ -110,6 +99,17 @@ function loadLevel(name) {
 	}
 
 	animations.openLevel(curLevel);
+
+	// load examples
+	if (text) {
+		curExample.hasExample = true;
+		curLevel.text = text;
+		loadExample();
+	}
+	else {
+		curExample.hasExample = false;
+		curLevel.text = "";
+	}
 }
 function unloadLevel() {
 	curLevel.used.rect = 0;
@@ -152,6 +152,9 @@ let bg = {
 	offset: new vec(0, 0),
 }
 
+let renderExampleBG = null;
+let renderExampleFG = null;
+
 Render.on("beforeRender", () => { // Render background
 	if (inGame) {
 		// boxes
@@ -175,21 +178,6 @@ Render.on("beforeRender", () => { // Render background
 			ctx.globalCompositeOperation = "source-over";
 			ctx.fill();
 		}
-		
-		/*
-		for (let s = 0; s < 8; s++) { // maybe change to dots later
-			ctx.beginPath();
-			let m = 100 * (s + 1);
-			Render.roundedPolygon([
-					new vec((bounds.min.x * 100 - center.x) - m, (bounds.min.y * 100 - center.y) - m * 0.9),
-					new vec((bounds.max.x * 100 - center.x) + m, (bounds.min.y * 100 - center.y) - m * 0.9),
-					new vec((bounds.max.x * 100 - center.x) + m, (bounds.max.y * 100 - center.y) + m),
-					new vec((bounds.min.x * 100 - center.x) - m, (bounds.max.y * 100 - center.y) + m),
-				], 150);
-			ctx.strokeStyle = "#171D3C10";
-			ctx.lineWidth = 30;
-			ctx.stroke();
-		}*/
 
 		let dotSpace = 70;
 		let dotSize = 12;
@@ -224,6 +212,8 @@ Render.on("beforeRender", () => { // Render background
 		ctx.fillStyle = "#111529";
 		fill();
 
+		if (renderExampleBG && curExample.hasExample) renderExampleBG();
+
 		ctx.beginPath();
 		Render.roundedPolygon(bgVerts.map(v => v.add({ x: -offset*0.4 + bg.offset.x / 2, y: offset + bg.offset.y / 2})), round);
 		ctx.fillStyle = "#13172E";
@@ -231,8 +221,10 @@ Render.on("beforeRender", () => { // Render background
 
 		ctx.beginPath();
 		Render.roundedPolygon(bgVerts, round);
-		ctx.fillStyle = "#161A31";
+		ctx.fillStyle = "#1A1E39";
 		fill();
+
+		if (renderExampleFG && curExample.hasExample) renderExampleFG();
 
 		ctx.scale(1 / bg.scale, 1 / bg.scale);
 

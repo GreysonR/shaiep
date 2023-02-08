@@ -24,7 +24,8 @@ function loadSave() {
 		}
 	});
 
-	shiftHome(maxPid - homePos);
+	// ! DEV CHANGE
+	// shiftHome(maxPid - homePos);
 }
 
 window.addEventListener("load", loadSave);
