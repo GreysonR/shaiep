@@ -96,9 +96,12 @@
 	user-select: none;
 	-webkit-user-select: none;
 
-	transition: width, height, border, background, font-size, margin, line-height;
+	transition: width, height, border, background, font-size, margin, line-height, transform;
 	transition-duration: 300ms;
 	transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.levelSet .levelIcon:hover {
+	transform: scale(1.1);
 }
 .levelSet .levelIcon:last-child {
 	margin-right: 0;

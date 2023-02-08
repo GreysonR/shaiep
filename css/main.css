@@ -77,7 +77,7 @@ body {
 .counter.hidden {
 	display: none;
 }
-#redo {
+.gameButton {
 	position: absolute;
 	top:  70px;
 	right: 100px;
@@ -93,21 +93,17 @@ body {
 	background-repeat: no-repeat;
 
 	cursor: pointer;
+
+	transition: transform 150ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 #homeButton {
-	position: absolute;
 	top:  150px;
-	right: 100px;
-
-	width:  60px;
-	height: 60px;
-	background-color: #1C203C;
-	border-radius: 8px;
 
 	background-image: url("../img/home.svg");
 	background-size: 30px;
-	background-position: center;
-	background-repeat: no-repeat;
 
 	cursor: pointer;
+}
+.gameButton:hover {
+	transform: scale(1.1);
 }
