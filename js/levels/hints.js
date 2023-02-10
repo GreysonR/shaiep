@@ -35,7 +35,7 @@ function getHint() {
 				border: "#FFA361a0",
 				borderWidth: 4,
 				opacity: 0,
-				layer: -1,
+				layer: 1,
 			}
 		});
 		currentHints[hid] = obj;
