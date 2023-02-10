@@ -27,6 +27,7 @@
 <rect width="4" height="4" fill="#2AE369"/>
 <rect x="4" width="4" height="4" fill="#3B57ED"/>
 <rect x="8" width="4" height="4" fill="#E3402A"/>
+<path d="M137 100L111.5 61.5H150L137 100Z" stroke="black"/>
 <path d="M62.129 25.0215L25.3248 37.2896L50.3647 112.41L87.169 100.142L62.129 25.0215Z" stroke="black"/>
 <path d="M150 18L75 18V62L150 62V18Z" stroke="black"/>
 </svg>

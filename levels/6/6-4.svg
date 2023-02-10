@@ -23,5 +23,7 @@
 <rect x="75" y="26" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect x="25" y="86" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect x="25" y="61" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<path d="M75.5 75L51 25.5L100 1.5L125 51L75.5 75ZM75.5 75H125V101.5H75.5V75ZM25.5 40L1 103.5L53.5 91.5L25.5 40Z" stroke="black"/>
+<path d="M125 76.5H61V101.5H125V76.5Z" stroke="black"/>
+<path d="M100 1.5L125 51L76.5 76.5L51 25.5L100 1.5Z" stroke="black"/>
+<path d="M1 103.5L25.5 40L53.5 91.5L1 103.5Z" stroke="black"/>
 </svg>

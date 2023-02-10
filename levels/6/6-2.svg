@@ -19,5 +19,6 @@
 <rect x="25" y="100" width="5" height="5" rx="2.5" fill="#DF3C3C"/>
 <rect x="75" y="100" width="5" height="5" rx="2.5" fill="#DF3C3C"/>
 <path d="M25 75.5V25H50V75.5H25Z" stroke="black"/>
-<path d="M64.5 50.5L37 100L60.5 113L86.5 64.5L64.5 50.5Z" stroke="black"/>
+<path d="M75.5 50.5V25L100 50.5H75.5Z" stroke="black"/>
+<path d="M86.5 64.5L64.5 50.5L37 100L60.5 113L86.5 64.5Z" stroke="black"/>
 </svg>

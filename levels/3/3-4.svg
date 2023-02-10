@@ -1,23 +1,26 @@
-<svg width="105" height="105" viewBox="0 0 105 105" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="50" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="100" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="50" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="100" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="50" y="75" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="100" y="75" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="25" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="75" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="25" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="75" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="25" y="75" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="75" y="75" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="75" y="100" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect y="75" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect width="4" height="4" fill="#2AE369"/>
-<rect x="4" width="4" height="4" fill="#E3402A"/>
-<rect x="8" width="4" height="4" fill="#E3402A"/>
+<svg width="106" height="106" viewBox="0 0 106 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="51" y="1" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="51" y="26" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="101" y="1" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="51" y="51" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="101" y="51" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="51" y="76" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="101" y="76" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="26" y="1" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="26" y="26" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="76" y="26" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="1" y="26" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="26" y="51" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="76" y="51" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="1" y="51" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="26" y="76" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="76" y="76" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="76" y="101" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="1" y="76" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="1" y="1" width="4" height="4" fill="#2AE369"/>
+<rect x="5" y="1" width="4" height="4" fill="#E3402A"/>
+<rect x="9" y="1" width="4" height="4" fill="#E3402A"/>
+<path d="M76 101.5L1.5 26.5L26 1.5L101.5 76.5L76 101.5Z" stroke="black"/>
+<path d="M26 76L1.5 50.5V76H26Z" stroke="black"/>
+<path d="M101.5 51.5L51 1.5H101.5V51.5Z" stroke="black"/>
 </svg>

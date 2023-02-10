@@ -22,7 +22,7 @@
 <rect x="112" y="87" width="5" height="5" rx="2.5" fill="#DF3C3C"/>
 <path d="M75 75L125 25V75H75Z" stroke="black"/>
 <path d="M25 126V25H75L25 126Z" stroke="black"/>
-<path d="M75 129L51 105L75 75L99 99L75 129Z" stroke="black"/>
+<path d="M75 125L50 100L75 75L100 100L75 125Z" stroke="black"/>
 <path d="M175 25H125V49H175V25Z" stroke="black"/>
 <rect width="4" height="4" fill="#E3402A"/>
 <rect x="8" width="4" height="4" fill="#3B57ED"/>

@@ -118,6 +118,13 @@ var animations = {
 		for (let body of bodies) {
 			animations.closeBody(body, center);
 		}
+		
+		let hids = Object.keys(currentHints);
+		for (let hid of hids) {
+			clearInterval(currentHints[hid].onend);
+			currentHints[hid].delete();
+			delete currentHints[hid];
+		}
 
 		animation.create({
 			delay: 50,
@@ -210,4 +217,27 @@ var animations = {
 				});
 			}
 		},
+	showHint: function(body) {
+		animation.create({
+			duration: 1000,
+			curve: ease.out.quintic,
+			callback: function(p) {
+				body.render.opacity = p;
+			},
+			onend: function() {
+				body.render.opacity = 1;
+			}
+		});
+		animation.create({
+			delay: 2500,
+			duration: 1500,
+			curve: ease.in.quintic,
+			callback: function(p) {
+				body.render.opacity = 1 - p;
+			},
+			onend: function() {
+				body.render.opacity = 1;
+			}
+		});
+	}
 }

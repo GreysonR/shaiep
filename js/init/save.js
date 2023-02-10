@@ -1,9 +1,11 @@
 "use strict";
 
 let data = JSON.parse(localStorage.getItem("schaiepSave") ?? "{}");
+let hints = JSON.parse(localStorage.getItem("schaiepHints") ?? "{}");
 
 function save() {
 	localStorage.setItem("schaiepSave", JSON.stringify(data));
+	localStorage.setItem("schaiepHints", JSON.stringify(hints));
 }
 function loadSave() {
 	let levelSets = document.getElementsByClassName("levelSet");

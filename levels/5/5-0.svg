@@ -11,4 +11,6 @@
 <rect y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect width="4" height="4" fill="#3B57ED"/>
 <rect x="4" width="4" height="4" fill="#3B57ED"/>
+<path d="M0.5 50.5V25.5H25.5V50.5H0.5Z" stroke="black"/>
+<path d="M75 50.5V25H100.5V50.5H75Z" stroke="black"/>
 </svg>

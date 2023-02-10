@@ -17,7 +17,6 @@ document.getElementById("mapInput").addEventListener("input", event => {
 			rect: 0,
 			diagRect: 0,
 			triangle: 0,
-			examples: 0,
 		}
 
 		let types = {
@@ -26,7 +25,8 @@ document.getElementById("mapInput").addEventListener("input", event => {
 			"#2AE369": "diagRect",
 			"#E3402A": "triangle",
 			"#F1CA41": "examples",
-			"#62C370": "body",
+			"#000000": "body",
+			"black": "body",
 		}
 		
 		function getNext() {
@@ -158,7 +158,7 @@ document.getElementById("mapInput").addEventListener("input", event => {
 						console.error(pathArr, i);
 					}
 
-					paths[pathNum].push({ x: Math.round(x), y: Math.round(y) });
+					paths[pathNum].push({ x: Math.round(x * 100) / 100, y: Math.round(y * 100) / 100 });
 				}
 				
 				for (let path of paths) {
@@ -170,14 +170,15 @@ document.getElementById("mapInput").addEventListener("input", event => {
 						if (!out[name]) {
 							continue;
 						}
-						let center = getCenterOfMass(path);
-	
 						if (new vec(path[0]).equals(path[path.length - 1])) {
 							path.pop();
 						}
+
+						let center = getCenterOfMass(path);
+	
 						out[name].push({
-							x: Math.round(center.x),
-							y: Math.round(center.y),
+							x: Math.round(center.x * 100) / 100,
+							y: Math.round(center.y * 100) / 100,
 							vertices: path,
 						});
 					}
@@ -207,10 +208,10 @@ document.getElementById("mapInput").addEventListener("input", event => {
 		}
 		
 		let snap = 25 / 4;
-		function transformPt(point, min) {
+		function transformPt(point, min, round = 1) {
 			return {
-				x: Math.round((point.x - min.x) / snap) * snap / 25,
-				y: Math.round((point.y - min.y) / snap) * snap / 25,
+				x: Math.round((point.x - min.x) / snap / round) * snap * round / 25,
+				y: Math.round((point.y - min.y) / snap / round) * snap * round / 25,
 			}
 		}
 
@@ -225,10 +226,10 @@ document.getElementById("mapInput").addEventListener("input", event => {
 			point.y = pt.y;
 		}
 		for (let body of out.body) {
-			let min = new vec(Infinity, Infinity);
-			for (let point of body.vertices) {
-				min.min2(point);
-			}
+			// let min = new vec(Infinity, Infinity);
+			// for (let point of body.vertices) {
+			// 	min.min2(point);
+			// }
 
 			for (let point of body.vertices) {
 				let pt = transformPt(point, min);
@@ -236,9 +237,9 @@ document.getElementById("mapInput").addEventListener("input", event => {
 				point.y = pt.y;
 			}
 
-			let c = transformPt(body, min);
-			body.x = c.x;
-			body.y = c.y;
+			let c = transformPt(body, min, 0.001);
+			body.x = Math.round(c.x * 1e5) / 1e5;
+			body.y = Math.round(c.y * 1e5) / 1e5;
 		}
 
 		// out = JSON.stringify(out, null, "\t");

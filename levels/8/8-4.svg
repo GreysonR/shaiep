@@ -1,33 +1,36 @@
-<svg width="218" height="142" viewBox="0 0 218 142" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="62" y="50" width="5" height="5" rx="2.5" fill="#DF3C3C"/>
-<rect x="25" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="75" y="87" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="112" y="125" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="100" y="62" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="125" y="37" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="25" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="150" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="200" y="62" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="183" y="74" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="157" y="87" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="50" y="76" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="25" y="62" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="112" y="87" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="50" y="100" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="175" y="87" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="162" y="107" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="100" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="75" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="62" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="137" y="100" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="187" y="112" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="50" y="112" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="125" y="62" width="5" height="5" rx="2.5" fill="#DF3C3C"/>
-<rect x="87" y="25" width="5" height="5" rx="2.5" fill="#DF3C3C"/>
-<rect width="4" height="4" fill="#E3402A"/>
-<rect x="8" width="4" height="4" fill="#2AE369"/>
-<rect x="12" width="4" height="4" fill="#2AE369"/>
-<rect x="4" width="4" height="4" fill="#E3402A"/>
-<path d="M26 27.5L78.5 89L51.5 115L1.5 52.5L26 27.5ZM62.5 25L113.5 127.5L141 102L62.5 25ZM102.5 64.5L152.5 52.5L102.5 27.5V64.5Z" stroke="black"/>
+<svg width="219" height="142" viewBox="0 0 219 142" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="63" y="50" width="5" height="5" rx="2.5" fill="#DF3C3C"/>
+<rect x="26" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="76" y="87" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="113" y="125" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="101" y="62" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="126" y="37" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="26" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="151" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="201" y="62" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="184" y="74" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="158" y="87" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="51" y="76" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="26" y="62" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="113" y="87" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="51" y="100" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="176" y="87" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="163" y="107" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="101" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="76" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="63" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="138" y="100" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="188" y="112" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="1" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="51" y="112" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="126" y="62" width="5" height="5" rx="2.5" fill="#DF3C3C"/>
+<rect x="88" y="25" width="5" height="5" rx="2.5" fill="#DF3C3C"/>
+<rect x="1" width="4" height="4" fill="#E3402A"/>
+<rect x="9" width="4" height="4" fill="#2AE369"/>
+<rect x="13" width="4" height="4" fill="#2AE369"/>
+<rect x="5" width="4" height="4" fill="#E3402A"/>
+<path d="M51.5 112L1.5 50L26 25L76 87L51.5 112Z" stroke="black"/>
+<path d="M113 125.5L63 25.5L113 87V125.5Z" stroke="black"/>
+<path d="M139.5 100.5L151 50L201 62L188.5 112L139.5 100.5Z" stroke="black"/>
+<path d="M126 37L101 62.5V25L126 37Z" stroke="black"/>
 </svg>

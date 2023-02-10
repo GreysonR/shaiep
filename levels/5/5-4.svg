@@ -18,4 +18,7 @@
 <rect x="0.825989" width="4" height="4" fill="#E3402A"/>
 <rect x="4.82599" width="4" height="4" fill="#2AE369"/>
 <rect x="8.82599" width="4" height="4" fill="#3B57ED"/>
+<path d="M101 75.5L25.5 0.5H75.5L101 75.5Z" stroke="black"/>
+<path d="M26 101V50.5H49.5V101H26Z" stroke="black"/>
+<path d="M76 50.5L51 75.5L76 100.5L100.5 75.5L76 50.5Z" stroke="black"/>
 </svg>

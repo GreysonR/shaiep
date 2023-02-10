@@ -25,6 +25,7 @@
 		</div>
 		<div id="redo" class="gameButton" onclick="playSound(`reverse.mp3`); loadLevel(curLevel.name || curLevel.data)"></div>
 		<div id="homeButton" class="gameButton" onclick="playSound(`sharpClick1.mp3`, 0.4); unloadLevel();openHome();"></div>
+		<div id="hint" class="gameButton" onclick="getHint();"></div>
 	</div>
 
 	<div id="home" class="active">
@@ -161,6 +162,7 @@
 <script src="js/levels/examples.js"></script>
 <script src="js/levels/levels.js"></script>
 <script src="js/levels/levelData.js"></script>
+<script src="js/levels/hints.js"></script>
 
 <!-- ui -->
 <script src="js/ui/home.js"></script>

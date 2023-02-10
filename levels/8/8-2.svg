@@ -23,4 +23,5 @@
 <rect x="8" width="4" height="4" fill="#2AE369"/>
 <path d="M137 63.5L112.5 75.5L100.5 50.5L88.5 25.5L112.5 13L137 63.5Z" stroke="black"/>
 <path d="M63.2514 25L38 50.2515L69.003 81.2544L94.2544 56.003L63.2514 25Z" stroke="black"/>
+<path d="M50 100V81.5H100V100H50Z" stroke="black"/>
 </svg>

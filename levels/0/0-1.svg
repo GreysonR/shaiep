@@ -1,4 +1,5 @@
 <svg width="30" height="55" viewBox="0 0 30 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_16_471)">
 <rect width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
@@ -6,4 +7,12 @@
 <rect x="25" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect width="4" height="4" fill="#3B57ED"/>
 <rect x="4" width="4" height="4" fill="#E3402A"/>
+<path d="M25 25H0V0L25 25Z" stroke="black"/>
+<path d="M25 25H0V50H25V25Z" stroke="black"/>
+</g>
+<defs>
+<clipPath id="clip0_16_471">
+<rect width="30" height="55" fill="white"/>
+</clipPath>
+</defs>
 </svg>

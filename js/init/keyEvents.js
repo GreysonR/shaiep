@@ -314,6 +314,7 @@ window.addEventListener("mousedown", event => {
 													save();
 													setTimeout(() => {
 														animations.closeLevel(curLevel);
+														curLevel.complete = true;
 	
 														setTimeout(() => {
 																let elem = document.getElementsByClassName("levelSet")[pid];

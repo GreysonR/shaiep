@@ -34,8 +34,9 @@
 <rect x="8" width="4" height="4" fill="#2AE369"/>
 <rect x="12" width="4" height="4" fill="#2AE369"/>
 <path d="M75 100V75H100V100H75Z" stroke="black"/>
-<path d="M100.5 62H37L87.5 12L100.5 62Z" stroke="black"/>
-<path d="M15 89L39.5 88V115L15 89Z" stroke="black"/>
-<path d="M75 75L50 100L39 88L61.5 62L75 75Z" stroke="black"/>
+<path d="M12 87H37V112L12 87Z" stroke="black"/>
+<path d="M74.5 24.5H50V12H74.5V24.5Z" stroke="black"/>
+<path d="M75 75L50 100L37 87L61.5 62L75 75Z" stroke="black"/>
 <path d="M50 25L62 37L24.5 75L12 62L50 25Z" stroke="black"/>
+<path d="M100.5 62H37L87.5 12L100.5 62Z" stroke="black"/>
 </svg>

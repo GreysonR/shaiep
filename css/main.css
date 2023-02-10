@@ -104,6 +104,17 @@ body {
 
 	cursor: pointer;
 }
+#hint {
+	top:  230px;
+
+	background-image: url("../img/hint.svg");
+	background-size: 35px;
+
+	cursor: pointer;
+}
+#hint.inactive {
+	background-image: url("../img/hintInactive.svg");
+}
 .gameButton:hover {
 	transform: scale(1.1);
 }

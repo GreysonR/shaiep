@@ -21,8 +21,10 @@ let curLevel = {
 	center: new vec(0, 0),
 	bounds: { min: new vec(0, 0), max: new vec(1, 1) },
 	maxPoints: 0,
+	complete: false,
 	points: [],
 	bodies: [],
+	solution: [],
 	otherBodies: [],
 	text: "",
 }
@@ -35,8 +37,11 @@ function loadLevel(name) {
 
 	unloadLevel();
 
-	let { point, badPoint, rect, diagRect, triangle, text } = level;
+	let { point, badPoint, rect, diagRect, triangle, body, text } = level;
 
+	if (body) {
+		curLevel.solution = [...body];
+	}
 	if (badPoint === undefined) badPoint = [];
 
 	rectCounter.innerHTML = rect + " / " + rect;
@@ -131,12 +136,20 @@ function unloadLevel() {
 	for (let body of curLevel.otherBodies) {
 		body.delete();
 	}
+	let hids = Object.keys(currentHints);
+	for (let hid of hids) {
+		clearInterval(currentHints[hid].onend);
+		currentHints[hid].delete();
+		delete currentHints[hid];
+	}
 
 	window.dispatchEvent(new CustomEvent("mousedown")); // reset dragging
 
 	curLevel.points.length = 0;
 	curLevel.bodies.length = 0;
+	curLevel.solution.length = 0;
 	curLevel.otherBodies.length = 0;
+	curLevel.complete = false;
 }
 
 function updateCounters() {

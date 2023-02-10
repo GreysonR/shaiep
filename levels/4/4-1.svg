@@ -8,4 +8,5 @@
 <rect x="35" y="35" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect x="35" y="62" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect width="4" height="4" fill="#E3402A"/>
+<path d="M35.5 86L10.5 25H87.5L35.5 86Z" stroke="black"/>
 </svg>
