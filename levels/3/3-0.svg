@@ -1,20 +1,27 @@
-<svg width="131" height="56" viewBox="0 0 131 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="51" y="26" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="51" y="1" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="26" y="26" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="1" y="26" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="26" y="1" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="26" y="51" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="76" y="1" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="76" y="26" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="101" y="51" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="101" y="1" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="101" y="26" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="126" y="26" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="1" y="1" width="4" height="4" fill="#E3402A"/>
-<rect x="5" y="1" width="4" height="4" fill="#E3402A"/>
-<rect x="9" y="1" width="4" height="4" fill="#3B57ED"/>
-<path d="M26 26H1.5L26 51.5V26Z" stroke="black"/>
-<path d="M101.5 26V51L126 26H101.5Z" stroke="black"/>
-<path d="M101 26H26V1H101V26Z" stroke="black"/>
+<svg width="130" height="55" viewBox="0 0 130 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_22_80)">
+<rect x="50" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="25" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="25" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="75" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="75" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="100" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="100" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="100" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect x="125" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
+<rect width="4" height="4" fill="#E3402A"/>
+<rect x="4" width="4" height="4" fill="#E3402A"/>
+<rect x="8" width="4" height="4" fill="#3B57ED"/>
+<path d="M50.5 25H0.5L25 50.5L50.5 25Z" stroke="black"/>
+<path d="M74.834 25L100.5 50L125 25H74.834Z" stroke="black"/>
+<path d="M100 25H25V0H100V25Z" stroke="black"/>
+</g>
+<defs>
+<clipPath id="clip0_22_80">
+<rect width="130" height="55" fill="white"/>
+</clipPath>
+</defs>
 </svg>

@@ -1,0 +1,63 @@
+.notification {
+	position: absolute;
+	z-index: 20;
+	top: 17vh;
+	transform: translateX(-50%);
+	left: 50%;
+
+	width:  22vh;
+	height: 14.8vh;
+
+	background-image: url("../img/notifs/badPoint.png");
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	cursor: pointer;
+	pointer-events: all;
+
+	opacity: 1;
+	transition: opacity, transform;
+	transition-duration: 400ms;
+	transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
+
+	animation-iteration-count: 1;
+	animation: notifIn;
+	animation-duration: 200ms;
+	animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+.notification.insideShape {
+	background-image: url("../img/notifs/insideShape.png");
+}
+.notification.noTriangle {
+	background-image: url("../img/notifs/noTriangle.png");
+}
+.notification.noRect {
+	background-image: url("../img/notifs/noRect.png");
+}
+.notification.noDiagRect {
+	background-image: url("../img/notifs/noDiagRect.png");
+}
+.notification.noShape {
+	background-image: url("../img/notifs/noShape.png");
+}
+
+
+
+@keyframes notifIn {
+	0% {
+		pointer-events: none;
+		transform: translateX(-50%) translateY(-1vh);
+		opacity: 0;
+	}
+	100% {
+		pointer-events: none;
+		transform: translateX(-50%);
+		opacity: 1;
+	}
+}
+
+.notification.deleted {
+	transform: translateX(-50%) translateY(-2vh);
+	opacity: 0;
+}

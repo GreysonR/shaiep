@@ -69,7 +69,8 @@ window.addEventListener("mousedown", event => {
 						curLevel.coveredPoints--;
 					}
 				}
-				body.delete();
+				// body.delete();
+				animations.deleteShape(body, 0, 90);
 				curLevel.bodies.delete(body);
 				curLevel.used[body.shapeType]--;
 
@@ -201,9 +202,6 @@ window.addEventListener("mousedown", event => {
 						}
 					}
 
-					function fail() {
-						playSound(`WrongClick.mp3`, 0.6);
-					}
 
 					// detect shape type
 					let rect = vertices.length === 4;
@@ -244,6 +242,23 @@ window.addEventListener("mousedown", event => {
 						}
 					}
 
+					let center = getCenterOfMass(vertices);
+					let obj = new fromVertices(vertices, center, {
+						render: {
+							background: "#62C37020",
+							border: "#62C370",
+							borderWidth: 4,
+						}
+					});
+
+					function fail() {
+						playSound(`WrongClick.mp3`, 0.6);
+
+						obj.render.border = "#B43838";
+						obj.render.background = "#B4383820";
+						obj.render.borderWidth = 5;
+						animations.deleteShape(obj);
+					}
 
 					if (rect || diagRect || triangle) {
 						let overMax = false;
@@ -252,21 +267,11 @@ window.addEventListener("mousedown", event => {
 						else if (diagRect) overMax = curLevel.used.diagRect >= curLevel.max.diagRect;
 
 						if (!overMax) {
-							let center = getCenterOfMass(vertices);
-							let obj = new fromVertices(vertices, center, {
-								render: {
-									background: "#62C37020",
-									border: "#62C370",
-									borderWidth: 4,
-								}
-							});
-		
 							let insideShape = false;
 							for (let body of curLevel.bodies) {
 								let collision = obj.isColliding(body);
 								if (collision.collision && collision.overlap > 1) {
 									insideShape = true;
-									obj.delete();
 									break;
 								}
 							}
@@ -274,7 +279,6 @@ window.addEventListener("mousedown", event => {
 							for (let point of curLevel.points) {
 								if (point.bad && obj.containsPoint(point.position)) {
 									containsBad = true;
-									obj.delete();
 									break;
 								}
 							}
@@ -364,14 +368,23 @@ window.addEventListener("mousedown", event => {
 								playSound(`shapeCreate${ Math.floor(Math.random() * 3) + 1 }.mp3`);
 							}
 							else {
+								if (insideShape) {
+									createNotification("insideShape");
+								}
+								else if (containsBad) {
+									createNotification("badPoint");
+								}
 								fail();
 							}
 						}
 						else {
+							let name = triangle ? "Triangle" : rect ? "Rect" : "DiagRect";
+							createNotification("no" + name);
 							fail();
 						}
 					}
 					else {
+						createNotification("noShape");
 						fail();
 					}
 				}

@@ -239,5 +239,18 @@ var animations = {
 				body.render.opacity = 1;
 			}
 		});
-	}
+	},
+	deleteShape: function(body, delay = 500, duration = 200) {
+		animation.create({
+			delay: delay,
+			duration: duration,
+			curve: ease.in.cubic,
+			callback: function(p) {
+				body.render.opacity = 1 - p;
+			},
+			onend: function() {
+				body.delete();
+			}
+		})
+	},
 }
