@@ -23,7 +23,7 @@
 	-webkit-user-select: none;
 }
 .levelSet {
-	width:  100vw;
+	width:  calc(100vw - 4px);
 	height: 75px !important;
 
 	position: relative;
@@ -209,4 +209,20 @@
 }
 #levelList .block.active + .block:not(.active):hover, #levelList .block:not(.active):has(+ .block.active):hover {
 	height: 18px;
+}
+
+@media only screen and (max-width: 800px) {
+	.levelSet .center {
+		width: calc(70vw - 100px);
+		height: max-content;
+		top: 50%;
+		transform: translateY(-30%);
+	}
+	.levelSet .levelIcon {
+		margin-top: 30px;
+	}
+
+	#leftArrow, #rightArrow {
+		width: 70px;
+	}
 }

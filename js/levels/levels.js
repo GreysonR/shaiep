@@ -192,26 +192,49 @@ Render.on("beforeRender", () => { // Render background
 			ctx.fill();
 		}
 
-		let dotSpace = 70;
-		let dotSize = 12;
+		let small =  (window.innerWidth * window.innerHeight) / 1000 < 600;
+		let medium = (window.innerWidth * window.innerHeight) / 1000 < 1400; // assume smaller screen size = less cpu power
+		let dotSpace = small ? 130 : medium ? 110 : 90;
+		let dotSize = small ? 16 : medium ? 15 : 14;
 		let camBounds = camera.bounds;
 		let width =  Math.ceil((camBounds.max.x - camBounds.min.x) / dotSpace) * dotSpace;
 		let height = Math.ceil((camBounds.max.y - camBounds.min.y) / dotSpace) * dotSpace;
 		ctx.fillStyle = "#13172E";
-		for (let x = 0; x < width; x += dotSpace) {
-			for (let y = 0; y < height; y += dotSpace) {
-				let curX = x + camBounds.min.x;
-				let curY = y + camBounds.min.y + 10;
-				let size = dotSize * Math.max(0.3, (1 - 100 / new vec(curX, curY).sub(mouse.gamePos).length));
-				let opacity = (300 / (Math.max(0, Math.max(Math.abs(x + camBounds.min.x), Math.abs(y + camBounds.min.y)) - 200))) ** 1.5 * bg.opacity ** (bg.scale ** 0.5);
-				if (Math.abs(curY) > height/2 - 300) {
-					opacity *= (height/2 - 300) / Math.abs(curY);
+		if (small) {
+			ctx.beginPath();
+			for (let x = 0; x < width; x += dotSpace) {
+				for (let y = 0; y < height; y += dotSpace) {
+					let curX = x + camBounds.min.x;
+					let curY = y + camBounds.min.y + 20;
+
+					let size = dotSize;
+					let opacity = bg.opacity * Math.min(1, 200 / new vec(curY, curX).length)
+					// if (Math.abs(curY) > height/2 - 300) {
+					// 	opacity *= (height/2 - 300) / Math.abs(curY);
+					// }
+					if (opacity <= 0.3) continue;
+					ctx.moveTo(curX, curY);
+					ctx.arc(curX, curY, size, 0, Math.PI*2);
 				}
-				if (opacity <= 0.2) continue;
-				ctx.globalAlpha = opacity;
-				ctx.beginPath();
-				ctx.arc(curX, curY, size, 0, Math.PI*2);
-				ctx.fill();
+			}
+			ctx.fill();
+		}
+		else {
+			for (let x = 0; x < width; x += dotSpace) {
+				for (let y = 0; y < height; y += dotSpace) {
+					let curX = x + camBounds.min.x;
+					let curY = y + camBounds.min.y + 10;
+					let size = dotSize * Math.max(0.3, (1 - 100 / new vec(curX, curY).sub(mouse.gamePos).length));
+					let opacity = (300 / (Math.max(0, Math.max(Math.abs(x + camBounds.min.x), Math.abs(y + camBounds.min.y)) - 200))) ** 1.5 * bg.opacity ** (bg.scale ** 0.5);
+					if (Math.abs(curY) > height/2 - 300) {
+						opacity *= (height/2 - 300) / Math.abs(curY);
+					}
+					if (opacity <= 0.2) continue;
+					ctx.globalAlpha = opacity;
+					ctx.beginPath();
+					ctx.arc(curX, curY, size, 0, Math.PI*2);
+					ctx.fill();
+				}
 			}
 		}
 		ctx.globalAlpha = bg.opacity;
