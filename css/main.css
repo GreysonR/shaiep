@@ -39,6 +39,19 @@ body {
 	user-select: none;
 	-webkit-user-select: none;
 }
+#counterBg {
+	display: block;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+
+	background: #101325;
+	background: linear-gradient(to bottom, #101325 0%, #101325 80%, transparent 100%);
+	width: 100vw;
+	height: 180px;
+}
 .counter {
 	position: static;
 	display: inline-block;
@@ -79,6 +92,7 @@ body {
 }
 .gameButton {
 	position: absolute;
+	z-index: 2;
 	top:  70px;
 	right: 100px;
 
