@@ -13,10 +13,11 @@
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/home.css">
 	<link rel="stylesheet" href="css/notifications.css">
+	<link rel="stylesheet" href="css/title.css">
 </head>
 <body>
 	<input id="mapInput" type="file" accept="image/svg+xml">
-	<div id="game">
+	<div id="game" class="title">
 		<canvas id="canv"></canvas>
 		
 		<div id="counterBg"></div>
@@ -30,7 +31,31 @@
 		<div id="hint" class="gameButton" onclick="getHint();"></div>
 	</div>
 
-	<div id="home" class="active">
+	<div id="title" class="active">
+		<div id="titleMain">
+			<div id="titleIcon"></div>
+			<div id="titleButtons">
+				<div class="titleButton" onclick="playSound(`sharpClick1.mp3`, 0.4);closeTitle();openHome()">Play</div>
+				<div class="titleButton" onclick="playSound(`sharpClick1.mp3`, 0.4);openHelp();">Help</div>
+				<div class="titleButton" onclick="playSound(`sharpClick1.mp3`, 0.4);openCredits();">Credits</div>
+			</div>
+		</div>
+
+		<div id="credits">
+			<div class="titleCenter">
+				<div class="titleText">Created by Greyson Rockwell</div>
+				<div class="titleButton back" onclick="playSound(`sharpClick1.mp3`, 0.4);openMainTitle();">Back</div>
+			</div>
+		</div>
+		<div id="help">
+			<div class="titleCenter">
+				<div class="titleText">just get better</div>
+				<div class="titleText">"skill issue" - josh</div>
+				<div class="titleButton back" onclick="playSound(`sharpClick1.mp3`, 0.4);openMainTitle();">Back</div>
+			</div>
+		</div>
+	</div>
+	<div id="home" class="">
 		<div id="levelSets">
 			<div class="levelSet">
 				<div class="center">
@@ -127,6 +152,7 @@
 			<div id="leftArrow"  onclick="shiftHome(-1)"></div>
 			<div id="rightArrow" onclick="shiftHome(1)"></div>
 		</div>
+		<div id="backTitle" onclick="playSound(`sharpClick1.mp3`, 0.4);openTitle();"></div>
 		<div id="levelList">
 			<div class="block active" onclick="switchBlock(this)"></div>
 			<div class="block" onclick="switchBlock(this)"></div>
@@ -148,6 +174,7 @@
 <script src="js/engine/grid.js"></script>
 <script src="js/engine/audio.js"></script>
 <script src="js/engine/hull.js"></script>
+<script src="js/engine/simplexNoise.js"></script>
 
 <script src="js/engine/performance.js"></script>
 <script src="js/engine/bodies.js"></script>
@@ -169,4 +196,5 @@
 
 <!-- ui -->
 <script src="js/ui/home.js"></script>
+<script src="js/ui/title.js"></script>
 </html>

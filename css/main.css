@@ -5,8 +5,11 @@ body {
 	background-color: #101325;
 }
 
-#game:not(.active) {
+#game {
 	display: none;
+}
+#game.active, #game.title {
+	display: block;
 }
 #home:not(.active) {
 	display: none;
@@ -131,4 +134,7 @@ body {
 }
 .gameButton:hover {
 	transform: scale(1.1);
+}
+#game.title .gameButton, #game.title #counters {
+	display: none;
 }

@@ -1,0 +1,101 @@
+#title {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 100vw;
+	height: 100vh;
+
+	display: none;
+}
+#title.active {
+	display: block;
+}
+
+#titleIcon {
+	position: absolute;
+	top: 50vh;
+	left: 50vw;
+	transform: translate(-50%, -100%);
+
+	width: 90vw;
+	height: 10vh;
+	background-image: url("../img/title.svg");
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;;
+}
+
+#titleButtons {
+	position: absolute;
+	top: 60vh;
+	left: 50vw;
+	transform: translateX(-50%);
+
+	font-family: "Montserrat", sans-serif;
+	font-weight: 600;
+	font-size: 28px;
+	color: #CBD0E3;
+	text-align: center;
+
+	user-select: none;
+	-webkit-user-select: none;
+}
+.titleButton {
+	cursor: pointer;
+	margin-top: 15px;
+
+	font-family: "Montserrat", sans-serif;
+	font-weight: 600;
+	font-size: 28px;
+	color: #CBD0E3;
+	text-align: center;
+
+	user-select: none;
+	-webkit-user-select: none;
+}
+.titleButton:hover {
+	text-decoration: underline;
+}
+.titleButton.back::before {
+	content: "";
+	display: inline-block;
+
+	width:  30px;
+	height: 30px;
+	margin-right: 14px;
+
+	background-image: url("../img/back2.svg");
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	position: relative;
+	top: 6px;
+}
+
+#title.credits #titleMain, #title.help #titleMain {
+	display: none;
+}
+#title:not(.credits) #credits, #title:not(.help) #help {
+	display: none;
+}
+
+#title .titleCenter {
+	position: absolute;
+	top: 50vh;
+	left: 50vw;
+	transform: translate(-50%, -50%);
+}
+#title .titleText {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 600;
+	font-size: 30px;
+	color: #b7bdd5;
+	text-align: center;
+
+	user-select: none;
+	-webkit-user-select: none;
+
+	margin-bottom: 10px;
+}

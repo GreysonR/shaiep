@@ -244,7 +244,7 @@ var animations = {
 		animation.create({
 			delay: delay,
 			duration: duration,
-			curve: ease.in.cubic,
+			curve: ease.linear,
 			callback: function(p) {
 				body.render.opacity = 1 - p;
 			},

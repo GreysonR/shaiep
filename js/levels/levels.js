@@ -30,6 +30,8 @@ let curLevel = {
 }
 
 function loadLevel(name) {
+	noise.seed(Math.random());
+
 	let level = typeof name === "object" ? name : levels[name];
 
 	curLevel.name = typeof name === "object" ? "Unknown" : name;
@@ -150,6 +152,8 @@ function unloadLevel() {
 	curLevel.solution.length = 0;
 	curLevel.otherBodies.length = 0;
 	curLevel.complete = false;
+
+	bg.noisePos.set({ x: 0, y: 0 });
 }
 
 function updateCounters() {
@@ -163,12 +167,18 @@ let bg = {
 	scale: 1,
 	opacity: 1,
 	offset: new vec(0, 0),
+	noisePos: new vec(0, 0),
 }
 
 let renderExampleBG = null;
 let renderExampleFG = null;
 
 Render.on("beforeRender", () => { // Render background
+	if (inGame || inTitle) {
+		let delta = Performance.delta / 17;
+		bg.noisePos.x += delta * 0.004;
+		bg.noisePos.y += delta * 0.004;
+	}
 	if (inGame) {
 		// boxes
 		let { bounds, center } = curLevel;
@@ -222,10 +232,13 @@ Render.on("beforeRender", () => { // Render background
 		else {
 			for (let x = 0; x < width; x += dotSpace) {
 				for (let y = 0; y < height; y += dotSpace) {
+					let noiseVal = (noise.simplex2(x * 0.002 + bg.noisePos.x, y * 0.002 + bg.noisePos.y) + 1) / 2 * 1 + 0;
 					let curX = x + camBounds.min.x;
 					let curY = y + camBounds.min.y + 10;
-					let size = dotSize * Math.max(0.3, (1 - 100 / new vec(curX, curY).sub(mouse.gamePos).length));
-					let opacity = (300 / (Math.max(0, Math.max(Math.abs(x + camBounds.min.x), Math.abs(y + camBounds.min.y)) - 200))) ** 1.5 * bg.opacity ** (bg.scale ** 0.5);
+					// let size = dotSize * Math.max(0.3, (1 - 100 / new vec(curX, curY).sub(mouse.gamePos).length));
+					let size = dotSize * noiseVal * Math.max(0.3, (1 - 100 / new vec(curX, curY).sub(mouse.gamePos).length));
+					// let opacity = (300 / (Math.max(0, Math.max(Math.abs(x + camBounds.min.x), Math.abs(y + camBounds.min.y)) - 200))) ** 1.5 * noiseVal * bg.opacity ** (bg.scale ** 0.5);
+					let opacity = (noiseVal * 0.5 + 0.5) * bg.opacity ** (bg.scale ** 0.5);
 					if (Math.abs(curY) > height/2 - 300) {
 						opacity *= (height/2 - 300) / Math.abs(curY);
 					}
@@ -265,5 +278,50 @@ Render.on("beforeRender", () => { // Render background
 		ctx.scale(1 / bg.scale, 1 / bg.scale);
 
 		ctx.globalAlpha = 1;
+	}
+	if (inTitle) {
+		let small =  (window.innerWidth * window.innerHeight) / 1000 < 600;
+		let medium = (window.innerWidth * window.innerHeight) / 1000 < 1400; // assume smaller screen size = less cpu power
+		let dotSpace = small ? 130 : medium ? 110 : 90;
+		let dotSize = small ? 16 : medium ? 15 : 14;
+		let camBounds = camera.bounds;
+		let width =  Math.ceil((camBounds.max.x - camBounds.min.x) / dotSpace) * dotSpace;
+		let height = Math.ceil((camBounds.max.y - camBounds.min.y) / dotSpace) * dotSpace;
+		ctx.fillStyle = "#13172E";
+		if (small) {
+			ctx.beginPath();
+			for (let x = 0; x < width; x += dotSpace) {
+				for (let y = 0; y < height; y += dotSpace) {
+					let curX = x + camBounds.min.x;
+					let curY = y + camBounds.min.y + 20;
+
+					let size = dotSize;
+					let opacity = bg.opacity * Math.min(1, 200 / new vec(curY, curX).length)
+					if (opacity <= 0.3) continue;
+					ctx.moveTo(curX, curY);
+					ctx.arc(curX, curY, size, 0, Math.PI*2);
+				}
+			}
+			ctx.fill();
+		}
+		else {
+			for (let x = 0; x < width; x += dotSpace) {
+				for (let y = 0; y < height; y += dotSpace) {
+					let noiseVal = (noise.simplex2(x * 0.002 + bg.noisePos.x, y * 0.002 + bg.noisePos.y) + 1) / 2;
+					let curX = x + camBounds.min.x;
+					let curY = y + camBounds.min.y + 10;
+					let size = dotSize * noiseVal;
+					let opacity = noiseVal * bg.opacity ** (bg.scale ** 0.5);
+					if (Math.abs(curY) > height/2 - 300) {
+						opacity *= (height/2 - 300) / Math.abs(curY);
+					}
+					if (opacity <= 0.2) continue;
+					ctx.globalAlpha = opacity;
+					ctx.beginPath();
+					ctx.arc(curX, curY, size, 0, Math.PI*2);
+					ctx.fill();
+				}
+			}
+		}
 	}
 });

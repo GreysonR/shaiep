@@ -12,6 +12,18 @@ window.addEventListener("keydown", event => {
 		unloadLevel();
 		openHome();
 	}
+	else if (key === "escape" && !inGame && !inTitle) { // go from home to title
+		playSound(`sharpClick1.mp3`, 0.4);
+		openTitle();
+	}
+	else if (key === "escape" && inTitle) {
+		let title = document.getElementById("title");
+
+		if (title.classList.contains("credits") || title.classList.contains("help")) {
+			playSound(`sharpClick1.mp3`, 0.4);
+			openMainTitle();
+		}
+	}
 	if (event.altKey && key === "q") {
 		document.getElementById("mapInput").classList.toggle("active");
 	}
@@ -70,7 +82,10 @@ window.addEventListener("mousedown", event => {
 					}
 				}
 				// body.delete();
-				animations.deleteShape(body, 0, 90);
+				body.render.border = "#DC5656";
+				body.render.background = "#DC565620";
+				body.render.borderWidth = 5;
+				animations.deleteShape(body, 0, 120);
 				curLevel.bodies.delete(body);
 				curLevel.used[body.shapeType]--;
 
