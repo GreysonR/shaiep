@@ -1,12 +1,10 @@
 <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_31_126)">
-<rect y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect x="25" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect x="75" y="50" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect x="25" y="75" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
-<rect x="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect x="50" y="75" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect x="75" y="75" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
 <rect x="25" y="25" width="5" height="5" rx="2.5" fill="#BFD1E5"/>
