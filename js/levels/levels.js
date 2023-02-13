@@ -209,7 +209,7 @@ Render.on("beforeRender", () => { // Render background
 		let camBounds = camera.bounds;
 		let width =  Math.ceil((camBounds.max.x - camBounds.min.x) / dotSpace) * dotSpace;
 		let height = Math.ceil((camBounds.max.y - camBounds.min.y) / dotSpace) * dotSpace;
-		ctx.fillStyle = "#13172E";
+		ctx.fillStyle = "#1A1E39";
 		if (small) {
 			ctx.beginPath();
 			for (let x = 0; x < width; x += dotSpace) {
@@ -287,7 +287,7 @@ Render.on("beforeRender", () => { // Render background
 		let camBounds = camera.bounds;
 		let width =  Math.ceil((camBounds.max.x - camBounds.min.x) / dotSpace) * dotSpace;
 		let height = Math.ceil((camBounds.max.y - camBounds.min.y) / dotSpace) * dotSpace;
-		ctx.fillStyle = "#13172E";
+		ctx.fillStyle = "#1A1E39";
 		if (small) {
 			ctx.beginPath();
 			for (let x = 0; x < width; x += dotSpace) {

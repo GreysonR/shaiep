@@ -36,21 +36,48 @@
 			<div id="titleIcon"></div>
 			<div id="titleButtons">
 				<div class="titleButton" onclick="playSound(`sharpClick1.mp3`, 0.4);closeTitle();openHome()">Play</div>
-				<div class="titleButton" onclick="playSound(`sharpClick1.mp3`, 0.4);openHelp();">Help</div>
+				<div class="titleButton" onclick="playSound(`sharpClick1.mp3`, 0.4);openHelp();">How to play</div>
 				<div class="titleButton" onclick="playSound(`sharpClick1.mp3`, 0.4);openCredits();">Credits</div>
 			</div>
 		</div>
 
 		<div id="credits">
 			<div class="titleCenter">
-				<div class="titleText">Created by Greyson Rockwell</div>
+				<div class="titleText" style="margin-bottom: 20px;">Created by Greyson Rockwell</div>
 				<div class="titleButton back" onclick="playSound(`sharpClick1.mp3`, 0.4);openMainTitle();">Back</div>
 			</div>
 		</div>
 		<div id="help">
 			<div class="titleCenter">
-				<div class="titleText">just get better</div>
-				<div class="titleText">"skill issue" - josh</div>
+				<div id="helpGrid">
+					<div class="titleText" style="text-align: left; font-size: 25px; display: flex; align-items: center;">
+						<div>
+							Click and drag to create shapes and cover all the dots
+							<br><br>
+							Avoid red points!
+							<br><br>
+							The number of shapes you can use is shown at the top of the level
+						</div>
+					</div>
+					<div id="helpTypes" style="font-size: 20px;">
+						<div class="helpType">
+							<div class="helpTypeName titleText"><span>Triangle</span></div>
+							<div class="helpTypeExplanation titleText">3 sides</div>
+						</div>
+						<div class="helpType">
+							<div class="helpTypeName titleText" style="height: 130px"><span>Rectangle</span></div>
+							<div class="helpTypeExplanation titleText">4 sides</div>
+							<div class="helpTypeExplanation titleText">90° angle between sides</div>
+							<div class="helpTypeExplanation titleText">Upright</div>
+						</div>
+						<div class="helpType">
+							<div class="helpTypeName titleText" style="height: 130px;"><span>Tilted Rectangle</span></div>
+							<div class="helpTypeExplanation titleText">4 sides</div>
+							<div class="helpTypeExplanation titleText">90° angle between sides</div>
+							<div class="helpTypeExplanation titleText">Can't be upright</div>
+						</div>
+					</div>
+				</div>
 				<div class="titleButton back" onclick="playSound(`sharpClick1.mp3`, 0.4);openMainTitle();">Back</div>
 			</div>
 		</div>

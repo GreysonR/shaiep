@@ -99,3 +99,44 @@
 
 	margin-bottom: 10px;
 }
+
+
+#helpGrid {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	column-gap: 70px;
+
+	width: min(100vw, 970px);
+	padding-left: 20px;
+}
+
+.helpType {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	border-bottom: 2px solid #b7bdd520;
+}
+.helpType:last-child {
+	border-bottom: none;
+}
+.helpTypeName {
+	text-align: right !important;
+	
+	grid-row: 1 / 4;
+	grid-column: 1;
+	display: flex;
+	align-items: center;
+	justify-content: right;
+	
+	color: #bec5dd !important;
+}
+.helpTypeExplanation {
+	text-align: left !important;
+	display: inline-block;
+	grid-column: 2;
+	margin-left: 40px;
+
+	font-size: 25px !important;
+}

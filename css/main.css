@@ -135,6 +135,6 @@ body {
 .gameButton:hover {
 	transform: scale(1.1);
 }
-#game.title .gameButton, #game.title #counters {
+#game.title .gameButton, #game.title #counters, #game.title #counterBg {
 	display: none;
 }
